@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/trozio/Project-two#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.43.0"
   }
 }
