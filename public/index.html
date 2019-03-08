@@ -1,71 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      </style>
-    <title>Document</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<title>Rally</title>
 </head>
 
 <body>
 
 
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-      </ul>
-    </div>
-  </nav>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="index.html"><img src="" alt=""></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="sass.html">Sass</a></li>
+				<li><a href="badges.html">Components</a></li>
+				<li><a href="collapsible.html">JavaScript</a></li>
+			</ul>
+		</div>
+	</nav>
+    <img src="./img/PEOPLE-HANGING-OUT.jpg" class="responsive-img" alt="404">
 
-		<div class="card"></div>
-
-        <ul id="messages"></ul>
-          <form action="">
-            <input id="m" autocomplete="off" /><button>Send</button>
-        </form>
-        <script src="app.js"></script>
-        <script>
-            var socket = io.connect('http://localhost');
-            socket.on('news', function (data) {
-              console.log(data);
-              socket.emit('my other event', { my: 'data' });
-            });
-          </script>
-        <script src="/socket.io/socket.io.js"></script>
-      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-      <script>
-      		$(function () {
-      		  var socket = io();
-      		  $('form').submit(function(e){
-      			e.preventDefault(); // prevents page reloading
-      			socket.emit('chat message', $('#m').val());
-      			$('#m').val('');
-      			return false;
-      		  });
-      		  socket.on('chat message', function(msg){
-      			$('#messages').append($('<li>').text(msg));
-      		  });
-      		});
-      	  </script>
+	<div id="posts" class="card"></div>
+<script type="text/javascript">
+M.AutoInit();
+   
+</script>
 
 </body>
+
 </html>

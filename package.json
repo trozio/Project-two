@@ -2,9 +2,20 @@
   "name": "Project-two",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "eslint": "^5.15.1",
+    "eslint-config-google": "^0.12.0",
+    "express": "^4.16.4",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.43.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node server.js"
   },
   "repository": {
@@ -17,17 +28,5 @@
   "bugs": {
     "url": "https://github.com/trozio/Project-two/issues"
   },
-  "homepage": "https://github.com/trozio/Project-two#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "mysql2": "^1.6.5",
-    "sequelize": "^4.43.0",
-    "socket.io": "^2.2.0",
-    "socket.io-client": "^2.2.0"
-  },
-  "devDependencies": {
-    "eslint": "^5.15.1",
-    "eslint-config-google": "^0.12.0"
-  }
+  "homepage": "https://github.com/trozio/Project-two#readme"
 }
