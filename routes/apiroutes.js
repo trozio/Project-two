@@ -4,6 +4,18 @@ let db = require("../models/index.js");
 let express = require("express");
 
 module.exports = function(app) {
+app.get("/api/users", function(req, res){
+	db.Users.findAll().then(function(data){
+		res.json(data);
+	})
+})
+
+app.get("/api/posts", function(req, res){
+	db.Posts.findAll().then(function(data){
+		res.json(data);
+	})
+})
+
 app.post("/api/users", function(req, res) {
 	db.Users.create({
 		firstName: req.body.firstName,
