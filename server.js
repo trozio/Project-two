@@ -2,6 +2,7 @@ let express = require("express");
 let app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+let db = require("./models/index.js");
 
 
 
@@ -12,7 +13,13 @@ app.use(express.json());
 app.use(express.static("public"));
 
 require("./routes/htmlRoutes.js")(app);
+require("./routes/apiRoutes.js")(app);
 
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
 
 
 
@@ -27,7 +34,4 @@ io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
     io.emit('chat message', msg);
   });
-});
-http.listen(PORT, function() {
-  console.log('listening on *:3000');
 });
