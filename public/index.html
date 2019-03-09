@@ -1,50 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <script src="app.js"></script>
-    <script>
-        var socket = io.connect('http://localhost');
-        socket.on('news', function (data) {
-          console.log(data);
-          socket.emit('my other event', { my: 'data' });
-        });
-      </script>
-</body>
-</html>
-=======
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font: 13px Helvetica, Arial;
+		}
+
+		form {
+			background: #000;
+			padding: 3px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+
+		form input {
+			border: 0;
+			padding: 10px;
+			width: 90%;
+			margin-right: .5%;
+		}
+
+		form button {
+			width: 9%;
+			background: rgb(130, 224, 255);
+			border: none;
+			padding: 10px;
+		}
+
+		#messages {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		#messages li {
+			padding: 5px 10px;
+		}
+
+		#messages li:nth-child(odd) {
+			background: #eee;
+		}
+	</style>
 </head>
+
 <body>
+	<ul id="messages"></ul>
+	<button class="btn" id="btn-login">Click me!</button>
+	<form action="">
+		<input id="m" autocomplete="off" /><button>Send</button>
+	</form>
+	<div id="fb-root"></div>
+	<script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
+	<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=780101082368714&autoLogAppEvents=1"></script>
+	<div class="fb-login-button" data-size="large" data-button-type="login_with" data-auto-logout-link="true"
+	 data-use-continue-as="false"></div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="assets/js/app.js"></script>
+	<script>
+		$(function () {
+			var socket = io();
+			$('form').submit(function (e) {
+				e.preventDefault(); // prevents page reloading
+				socket.emit('chat message', $('#m').val());
+				$('#m').val('');
+				return false;
+			});
+			socket.on('chat message', function (msg) {
+				$('#messages').append($('<li>').text(msg));
+			});
+		});
+	</script>
+	<script>
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId: '{your-app-id}',
+				cookie: true,
+				xfbml: true,
+				version: '{api-version}'
+			});
 
+			FB.AppEvents.logPageView();
 
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-      </ul>
-    </div>
-  </nav>
+		};
 
-		<div class="card"></div>
-
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 </body>
+
 </html>
->>>>>>> b9d88ddd66200d52879f2a7d028735f1d6b6b645
