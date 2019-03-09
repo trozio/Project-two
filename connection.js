@@ -5,3 +5,5 @@ const sequelize = new Sequelize(process.env.database, process.env.username, proc
   dialect: 'mysql',
   operatorsAliases: false,
 });
+
+module.exports = connection;
