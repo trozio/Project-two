@@ -12,6 +12,16 @@ app.post("/api/users", function(req, res) {
 	}).then(response => {
 		res.json(response);
 	})
+})
 
+app.post("/api/posts", function(req, res) {
+	db.Posts.create({
+		eventName: req.body.eventName,
+		time: req.body.time,
+		location: req.body.location,
+		description: req.body.description
+	}).then(response => {
+		res.json(response);
+	})
 })
 };
