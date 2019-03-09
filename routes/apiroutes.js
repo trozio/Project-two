@@ -20,7 +20,17 @@ app.post("/api/users", function(req, res) {
 	db.Users.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
-		description: req.body.description
+		description: req.body.description,
+		tag1: req.body.tag1,
+		tag2: req.body.tag2,
+		tag3: req.body.tag3,
+		tag4: req.body.tag4,
+		tag5: req.body.tag5,
+		tag6: req.body.tag6,
+		tag7: req.body.tag7,
+		tag8: req.body.tag8,
+		tag9: req.body.tag9,
+		tag10: req.body.tag10
 	}).then(response => {
 		res.json(response);
 	})
@@ -41,7 +51,7 @@ app.post("/api/posts", function(req, res) {
 		tag7: req.body.tag7,
 		tag8: req.body.tag8,
 		tag9: req.body.tag9,
-		tag10: req.body.tag1
+		tag10: req.body.tag10
 	}).then(response => {
 		res.json(response);
 	})
