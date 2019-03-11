@@ -5,6 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -29,9 +33,24 @@
 	</nav>
     <img src="./img/PEOPLE-HANGING-OUT.jpg" class="responsive-img" alt="Image not loaded">
 
-	<div id="posts" class="card"></div>
+<div id="posts"></div>
 <script type="text/javascript">
 M.AutoInit();
+$(document).ready(
+	$.ajax({
+	url: "http://localhost:3000/api/posts",
+	method: "GET"
+}).then(function(results){
+	console.log(results);
+	for(i = 0; i < results.length; i++){
+		let post = $("<div>");
+		post.addClass("row");
+		post.html("<div class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='./img/PEOPLE-HANGING-OUT.jpg'><span class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" + results[i].description + "</p></div><div class='card-action'><a href='#'>This is a link</a></div></div></div>");
+		$("#posts").append(post);
+
+	}
+}))
+
 
 </script>
 
