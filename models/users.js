@@ -2,6 +2,11 @@ module.exports = function(sequelize, DataTypes) {
   let Users = sequelize.define("Users", {
     firstName: DataTypes.STRING,
 	lastName: DataTypes.STRING,
+	email: DataTypes.STRING,
+	photo: {
+		type: DataTypes.STRING,
+		allowNull: true
+	},
     description: DataTypes.TEXT,
 	tag1: {
       type: DataTypes.BOOLEAN,

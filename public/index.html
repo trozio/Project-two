@@ -3,56 +3,86 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>Rally</title>
 </head>
 
 <body>
 
-
+<div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
-			<a href="index.html"><img src="" alt=""></a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="login.html">Login</a></li>
-				<li><a href="badges.html">Components</a></li>
-				<li><a href="collapsible.html">Logout</a></li>
-			</ul>
+<a href="#" data-target="slide-out" class="sidenav-trigger show-on-medium-and-up"><i class="material-icons">menu</i></a>
+
+<a href="index.html"><i class="material-icons">face</i></a>
 		</div>
 	</nav>
-    <img src="./img/PEOPLE-HANGING-OUT.jpg" class="responsive-img" alt="Image not loaded">
+</div>
+	<ul id="slide-out" class="sidenav">
+		<li>
+			<div class="user-view">
+				<div class="background">
+					<img style="width: 100%; height: 100%;" id="background" src="">
+				</div>
+				<a href="profile.html"><img id="photo" class="circle"></a>
+				<a href="profile.html"><span id="userName" class="white-text name"></span></a>
+				<a href="profile.html"><span id="email" class="white-text email">jdandturk@gmail.com</span></a>
+			</div>
+		</li>
+		<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+		<li><a href="#!">Second Link</a></li>
+		<li>
+			<div class="divider"></div>
+		</li>
+		<li><a class="subheader">Subheader</a></li>
+		<li><a href="login.html">Login</a></li>
+		<li><a href="badges.html">Components</a></li>
+		<li><a href="collapsible.html">Logout</a></li>
+	</ul>
 
-<div id="posts"></div>
-<script type="text/javascript">
-M.AutoInit();
-$(document).ready(
-	$.ajax({
-	url: "http://localhost:3000/api/posts",
-	method: "GET"
-}).then(function(results){
-	console.log(results);
-	for(i = 0; i < results.length; i++){
-		let post = $("<div>");
-		post.addClass("row");
-		post.html("<div class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='./img/PEOPLE-HANGING-OUT.jpg'><span class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" + results[i].description + "</p></div><div class='card-action'><a href='#'>This is a link</a></div></div></div>");
-		$("#posts").append(post);
 
-	}
-}))
+	<div id="posts"></div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			M.AutoInit();
+			$('.sidenav').sidenav();
+			$.ajax({
+				url: "http://localhost:3000/api/posts",
+				method: "GET"
+			}).then(function(results) {
+				console.log(results);
+				for (i = 0; i < results.length; i++) {
+					let post = $("<div>");
+					post.addClass("row");
+					post.html("<div class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='./img/PEOPLE-HANGING-OUT.jpg'><span class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" +
+						results[i].description + "</p></div><div class='card-action'><a href='#'>This is a link</a></div></div></div>");
+					$("#posts").append(post);
 
+				}
+			})
 
-</script>
+			$.ajax({
+				url: "http://localhost:3000/api/users",
+				method: "GET"
+			}).then(function(results) {
+				console.log(results);
+				$("#userName").html(results[1].firstName + " " + results[0].lastName);
+				$("#email").html(results[1].email);
+				$("#photo").attr("src", results[1].photo);
+				$("#background").attr("src", "./img/background.jpg");
+
+			})
+		});
+
+	</script>
 
 </body>
 

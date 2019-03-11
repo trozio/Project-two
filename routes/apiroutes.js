@@ -20,6 +20,8 @@ app.post("/api/users", function(req, res) {
 	db.Users.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
+		email: req.body.email,
+		photo: req.body.photo,
 		description: req.body.description,
 		tag1: req.body.tag1,
 		tag2: req.body.tag2,
