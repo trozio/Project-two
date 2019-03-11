@@ -20,8 +20,10 @@
   "homepage": "https://github.com/trozio/Project-two#readme",
   "dependencies": {
     "auth0-js": "^9.10.0",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "fs": "0.0.1-security",
     "install": "^0.12.2",
     "mysql2": "^1.6.5",
     "npm": "^6.9.0",

@@ -56,12 +56,7 @@
 </head>
 
 <body>
-	<ul id="messages"></ul>
-	<button class="btn" id="btn-login">Click me!</button>
-	<form action="">
-		<input id="m" autocomplete="off" /><button>Send</button>
-	</form>
-	<div id="fb-root"></div>
+	
 	<script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
 	<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=780101082368714&autoLogAppEvents=1"></script>
 	<div class="fb-login-button" data-size="large" data-button-type="login_with" data-auto-logout-link="true"
@@ -119,22 +114,8 @@
               socket.emit('my other event', { my: 'data' });
             });
           </script>
-        <script src="/socket.io/socket.io.js"></script>
-      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-      <script>
-      		$(function () {
-      		  var socket = io();
-      		  $('form').submit(function(e){
-      			e.preventDefault(); // prevents page reloading
-      			socket.emit('chat message', $('#m').val());
-      			$('#m').val('');
-      			return false;
-      		  });
-      		  socket.on('chat message', function(msg){
-      			$('#messages').append($('<li>').text(msg));
-      		  });
-      		});
-      	  </script>
+
+    
 
 </body>
 </html>
