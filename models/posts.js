@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
 	tag1: {
       type: DataTypes.BOOLEAN,
-      
+
   },
 	tag2: {
       type: DataTypes.BOOLEAN,
