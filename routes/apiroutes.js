@@ -7,10 +7,12 @@ module.exports = function(app) {
 app.get("/api/users", function(req, res){
 	db.Users.findAll().then(function(data){
 		res.json(data);
+		console.log(data);
 	})
 })
 
 app.get("/api/posts", function(req, res){
+	
 	db.Posts.findAll().then(function(data){
 		res.json(data);
 	})
@@ -22,6 +24,7 @@ app.post("/api/users", function(req, res) {
 		lastName: req.body.lastName,
 		description: req.body.description
 	}).then(response => {
+		console.log(response);
 		res.json(response);
 	})
 })

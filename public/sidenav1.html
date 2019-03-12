@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Untitled Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="navbar-fixed">
+        <nav class="red">
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="#!">Find an event</a></li>
+                <li><a href="#!">Join an event</a></li>
+            </ul>
+    
+            <div class="nav-wrapper"> <a href="#" class="brand-logo center">Rally</a> <a href="#"
+                    data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="left hide-on-med-and-down">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+                            href="#!" data-activates="dropdown1">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul id="mobile-demo" class="side-nav">
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Dropdown 1</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#">Link1</a></li>
+                                        <li><a href="#">link2</a></li>
+                                        <li><a href="#">link3</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Dropdown 2</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#">link1</a></li>
+                                        <li><a href="#">link2</a></li>
+                                        <li><a href="#">link3</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Dropdown 3</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="#">link1</a></li>
+                                        <li><a href="#">link2</a></li>
+                                        <li><a href="#">link3</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Normal link
+                                    1</a></li>
+                            <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Normal link
+                                    2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="container">
+        
+                <ul id="slide-out" class="side-nav">
+                    <li>
+                        <div class="user-view">
+                            <!-- <div class="background"> -->
+                                <img src="../public/img/bg.jpeg">
+                            <!-- </div> -->
+                            <a href="#!user"><img class="circle"
+                                    src="../public/img/avatar.png"></a>
+                            <a href="#!name"><span class="white-text name">Free Time Learn</span></a>
+                            <a href="#!email"><span class="white-text email">freetimelearn@gmail.com</span></a>
+                        </div>
+                    </li>
+        
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">code</i>HTML5</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">flare</i>CSS3</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">desktop_mac</i>Bootstrap 3</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">laptop_mac</i>Bootstrap 4</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">dvr</i>Materialize CSS</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a class="subheader">Scripts</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">input</i>JavaScript</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">show_chart</i>jQuery</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">local_grocery_store</i>Ajax</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">local_library</i>AngularJS</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="btn button-collapse blue hoverable">SIDE NAV</a>
+        
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script>
+        $(".button-collapse").sideNav();
+        $(".button-collapse").sideNav({
+                menuWidth: 300, // Default is 240
+                edge: 'leftt', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            });
+    </script>
+</body>
+
+</html>

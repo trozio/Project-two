@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import materialize css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta charset="UTF-8">
+    <!-- Let website know website is optimized for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Events</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar-wrapper">
+            <div class="container">
+                <a href="#" class="brand-logo center">Rally</a>
+                <a href="#"> <i class="material-icons">menu</i>
+                </a>
+                    <!-- <i class="material-icons">menu</i>
+                </a>
+                <a href="" class="button-collapse" data-activates="sidenav">
+                <i class="material-icons">menu</i>
+                </a> -->
+                
+                <!-- <a href="#" class="side" data-activates="sidenav">
+                    <i class="material-icons">menu</i>
+                </a> -->
+                <ul class="hide-on-med-and-down right">
+                    <li class="active"><a href="">Home</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Projects</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+                </div>
+                </div>
+                    </nav>
+                <ul class="sidenav" id="side_out">
+<li class="active"><a><i class="material-icons">home</i>Home</a></li>
+<li><a> <i class="material-icons">public</i>Services</a></li>
+<li><a> <i class="material-icons">home</i>About Us</a></li>
+<li><a> <i class="material-icons">email</i>Contact</a></li>
+                </ul>
+           
+
+
+    <!-- <div style="height: 800 px"></div> -->
+    <!-- Import jQuery before materialize.js -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        const slide_menu=document.querySelectorAll('.sidenav');
+        M.Sidenav.init(slide_menu, {});
+        // document.addEventListener('DOMContentLoaded', function () {
+        //         var elems = document.querySelectorAll('.sidenav');
+        //         var instances = M.Sidenav.init(elems, options);
+        //     });
+
+        // $(document).ready(function () {
+        //     //custom js and jquery here
+        //      $('.button-collapse').sideNav();
+
+       
+        // })
+    </script>
+</body>
+
+</html>
