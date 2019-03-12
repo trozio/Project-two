@@ -27,6 +27,7 @@ function callAPI() {
             <p>My Name is ${data.nickname}</p>
             <img src="${data.picture}" />
             <p>Email: ${data.name}</p>
+            
         `);
     })
 }
