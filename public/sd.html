@@ -65,9 +65,7 @@
 		});
 
 		socket.on("disconnect", function(){
-			$("#msgs").append("
-The server is not available
-");
+			$("#msgs").append("The server is not available");
 			$("#msg").attr("disabled", "disabled");
 			$("#send").attr("disabled", "disabled");
 		});
