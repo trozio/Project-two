@@ -21,3 +21,23 @@ window.addEventListener('load', function () {
     });
 
 })
+
+var apiUrl = 'http://chrisoffiong.auth0.com/';
+
+function callAPI() {
+   
+    $.ajax({
+        type: "GET",
+        url: apiUrl,
+        headers: {
+            'Authorization': 'Bearer '
+        
+    }
+}).then(function(data) {
+        console.log(data)
+      })
+}
+
+
+
+$("#button").on("click", callAPI())
