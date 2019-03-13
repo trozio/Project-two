@@ -97,7 +97,23 @@
 			})
 		});
 
-		
+		var webAuth = new auth0.WebAuth({
+	        domain: 'chrisoffiong.auth0.com',
+	        clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
+	        responseType: 'token id_token',
+	        scope: 'openid profile',
+	        redirectUrl: 'http://localhost:3000/'
+	    });
+
+	var logoutBtn = document.getElementById('button2');
+		logoutBtn.addEventListener('click', function(e) {
+			e.preventDefault();
+			webAuth.logout({
+		       returnTo: 'http://localhost:3000/homepage.html',
+			   clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN'
+		     });
+		});
+
 	</script>
 
 </body>

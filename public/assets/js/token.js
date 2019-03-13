@@ -17,7 +17,7 @@ function convertToken(token) {
 let result = convertToken(token);
 
 function callAPI() {
-
+	
     $.ajax({
         type: "POST",
         url: '/get/token',

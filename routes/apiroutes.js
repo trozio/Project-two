@@ -3,7 +3,6 @@ let Users = require("../models/users.js");
 let db = require("../models/index.js");
 let express = require("express");
 var axios = require('axios')
-let users = require('../models/users.js')
 const url = require('url')
 let app = express();
 
@@ -22,9 +21,9 @@ app.get("/api/posts", function(req, res){
 
 app.post("/api/users", function(req, res) {
 	db.Users.create({
-		userName: req.body.nickname,
-		email: req.body.name,
-		photo: req.body.picture,
+		userName: req.body.userName,
+		email: req.body.email,
+		photo: req.body.photo,
 		uniqueID: req.body.uniqueID,
 		tag1: req.body.tag1,
 		tag2: req.body.tag2,
@@ -68,12 +67,8 @@ app.get('/api/profile', function (req, res) {
 
 app.post('/get/token', (req, res) => {
     const token = req.body.access_token;
-	var webAuth = new auth0.WebAuth({
-	    domain:       'YOUR_DOMAIN',
-	    clientID:     'YOUR_CLIENT_ID'
-	  });
+console.log(req);
 
-	  
     axios({
         url: 'http://chrisoffiong.auth0.com/userinfo', // domain
         method: 'GET',
@@ -81,15 +76,19 @@ app.post('/get/token', (req, res) => {
           'Authorization': 'Bearer ' + token,
         },
       })
-      .then(function (response) {
+	  .then(function (response) {
+        console.log(response.data)
+        res.json(response.data);
 		  let data = response.data;
         console.log(data)
 
+
+		// app.post("/api/users", function(data, res){
 			db.Users.create({
 			userName: data.nickname,
 			email: data.name,
 			photo: data.picture,
-			uniqueID: data.sub.splice("|"),
+			uniqueID: data.sub,
 			tag1: data.tag1,
 			tag2: data.tag2,
 			tag3: data.tag3,
@@ -102,7 +101,9 @@ app.post('/get/token', (req, res) => {
 			tag10: data.tag10}).then(res.json).catch(function(err) {
 				console.log(err);
 			})
-
+// 		}).then(function(response){
+// res.json(response);
+// 		})
       })
       .catch(function () {
         res.status(500).json({
