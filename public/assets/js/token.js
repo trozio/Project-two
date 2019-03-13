@@ -14,7 +14,7 @@ function convertToken(token) {
     return tokenObj;
 }
 
-const result = convertToken(token);
+let result = convertToken(token);
 
 function callAPI() {
 

@@ -9,43 +9,43 @@ module.exports = function(sequelize, DataTypes) {
 	},
     description: DataTypes.TEXT,
 	tag1: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag2: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag3: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag4: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag5: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag6: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag7: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag8: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag9: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   },
 	tag10: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
 
   }
   });
