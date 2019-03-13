@@ -65,50 +65,50 @@ app.get('/api/profile', function (req, res) {
     res.redirect('/profile');
   })
 
-app.post('/get/token', (req, res) => {
-    const token = req.body.access_token;
-console.log(req);
+  app.post('/get/token', (req, res) => {
+      const token = req.body.access_token;
 
-    axios({
-        url: 'http://chrisoffiong.auth0.com/userinfo', // domain
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + token,
-        },
-      })
-	  .then(function (response) {
-        console.log(response.data)
-        res.json(response.data);
-		  let data = response.data;
-        console.log(data)
+      axios({
+          url: 'http://chrisoffiong.auth0.com/userinfo', // domain
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+          },
+        })
+        .then(function (response) {
+          console.log(response.data)
+          res.json(response.data);
+		  db.Users.create({
+		  userName: data.nickname,
+		  email: data.name,
+		  photo: data.picture,
+		  uniqueID: data.sub,
+		  tag1: data.tag1,
+		  tag2: data.tag2,
+		  tag3: data.tag3,
+		  tag4: data.tag4,
+		  tag5: data.tag5,
+		  tag6: data.tag6,
+		  tag7: data.tag7,
+		  tag8: data.tag8,
+		  tag9: data.tag9,
+		  tag10: data.tag10}).then(res.json).catch(function(err) {
+		  	console.log(err);
+		  })
+        })
+        .catch(function () {
+          res.status(500).json({
+            message: 'Internal Error'
+          });
+        });
+
 
 
 		// app.post("/api/users", function(data, res){
-			db.Users.create({
-			userName: data.nickname,
-			email: data.name,
-			photo: data.picture,
-			uniqueID: data.sub,
-			tag1: data.tag1,
-			tag2: data.tag2,
-			tag3: data.tag3,
-			tag4: data.tag4,
-			tag5: data.tag5,
-			tag6: data.tag6,
-			tag7: data.tag7,
-			tag8: data.tag8,
-			tag9: data.tag9,
-			tag10: data.tag10}).then(res.json).catch(function(err) {
-				console.log(err);
-			})
+
 // 		}).then(function(response){
 // res.json(response);
 // 		})
       })
-      .catch(function () {
-        res.status(500).json({
-          message: 'Internal Error'
-        });
-      });
-  });
-};
+
+  };

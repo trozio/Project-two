@@ -17,20 +17,17 @@ function convertToken(token) {
 let result = convertToken(token);
 
 function callAPI() {
-	
+
     $.ajax({
         type: "POST",
         url: '/get/token',
         data: result
     }).then(function (data) {
-        $('.container').html(`
-            <p>My Name is ${data.nickname}</p>
-            <img src="${data.picture}" />
-            <p>Email: ${data.name}</p>
+        console.log(data);
 
-        `);
+	});
 
-    })
-}
+    }
+
 
 callAPI();
