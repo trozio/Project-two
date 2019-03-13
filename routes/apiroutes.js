@@ -5,6 +5,7 @@ let express = require("express");
 var axios = require('axios')
 let users = require('../models/users.js')
 const url = require('url')
+let app = express();
 
 module.exports = function(app) {
 app.get("/api/users", function(req, res){
