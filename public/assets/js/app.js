@@ -12,11 +12,13 @@ window.addEventListener('load', function () {
         redirectUri: 'http://localhost:3000/'
     });
 
-    // ...
-    var loginBtn = document.getElementById('button');
-
+        var loginBtn = document.getElementById('button');
     loginBtn.addEventListener('click', function (e) {
         e.preventDefault();
         webAuth.authorize();
     });
+
+    
+    // ...
+
 })

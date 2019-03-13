@@ -8,6 +8,8 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 
+</script>
+
 	</script>
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -65,6 +67,8 @@
 
 
 	<div id="posts"></div>
+
+    <script src="./assets/js/token.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			M.AutoInit();
@@ -97,22 +101,9 @@
 			})
 		});
 
-		var webAuth = new auth0.WebAuth({
-	        domain: 'chrisoffiong.auth0.com',
-	        clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
-	        responseType: 'token id_token',
-	        scope: 'openid profile',
-	        redirectUrl: 'http://localhost:3000/'
-	    });
 
-	var logoutBtn = document.getElementById('button2');
-		logoutBtn.addEventListener('click', function(e) {
-			e.preventDefault();
-			webAuth.logout({
-		       returnTo: 'http://localhost:3000/homepage.html',
-			   clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN'
-		     });
-		});
+
+
 
 	</script>
 

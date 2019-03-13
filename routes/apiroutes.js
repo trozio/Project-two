@@ -66,7 +66,7 @@ app.get('/api/profile', function (req, res) {
   })
 
   app.post('/get/token', (req, res) => {
-      const token = req.body.access_token;
+      let token = req.body.access_token;
 
       axios({
           url: 'http://chrisoffiong.auth0.com/userinfo', // domain
@@ -76,8 +76,8 @@ app.get('/api/profile', function (req, res) {
           },
         })
         .then(function (response) {
-          console.log(response.data)
-          res.json(response.data);
+
+let data = response.data;
 		  db.Users.create({
 		  userName: data.nickname,
 		  email: data.name,
@@ -92,10 +92,10 @@ app.get('/api/profile', function (req, res) {
 		  tag7: data.tag7,
 		  tag8: data.tag8,
 		  tag9: data.tag9,
-		  tag10: data.tag10}).then(res.json).catch(function(err) {
-		  	console.log(err);
+		  tag10: data.tag10}).then(function(resp){
+			  res.json(resp);
 		  })
-        })
+	  })
         .catch(function () {
           res.status(500).json({
             message: 'Internal Error'
@@ -104,11 +104,8 @@ app.get('/api/profile', function (req, res) {
 
 
 
-		// app.post("/api/users", function(data, res){
-
-// 		}).then(function(response){
-// res.json(response);
-// 		})
+		
       })
 
-  };
+
+}

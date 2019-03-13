@@ -23,9 +23,13 @@ function callAPI() {
         url: '/get/token',
         data: result
     }).then(function (data) {
-        console.log(data);
+        $('.container').html(`
+            <p>My Name is ${data.nickname}</p>
+            <img src="${data.picture}" />
+            <p>Email: ${data.name}</p>
 
-	});
+        `);
+    })
 
     }
 
