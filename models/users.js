@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
 		type: DataTypes.STRING,
 		allowNull: true
 	},
-    description: DataTypes.TEXT,
+    uniqueID: DataTypes.STRING,
 	tag1: {
       type: DataTypes.STRING,
 

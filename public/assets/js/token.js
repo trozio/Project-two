@@ -29,6 +29,7 @@ function callAPI() {
             <p>Email: ${data.name}</p>
 
         `);
+
     })
 }
 

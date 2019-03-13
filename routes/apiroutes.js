@@ -25,6 +25,7 @@ app.post("/api/users", function(req, res) {
 		userName: req.body.nickname,
 		email: req.body.name,
 		photo: req.body.picture,
+		uniqueID: req.body.uniqueID,
 		tag1: req.body.tag1,
 		tag2: req.body.tag2,
 		tag3: req.body.tag3,
@@ -45,7 +46,6 @@ app.post("/api/posts", function(req, res) {
 		eventName: response.data.eventName,
 		time: response.data.time,
 		location: response.data.location,
-		description: response.data.description,
 		tag1: response.data.tag1,
 		tag2: response.data.tag2,
 		tag3: response.data.tag3,
@@ -66,9 +66,14 @@ app.get('/api/profile', function (req, res) {
     res.redirect('/profile');
   })
 
-  app.post('/get/token', (req, res) => {
+app.post('/get/token', (req, res) => {
     const token = req.body.access_token;
+	var webAuth = new auth0.WebAuth({
+	    domain:       'YOUR_DOMAIN',
+	    clientID:     'YOUR_CLIENT_ID'
+	  });
 
+	  
     axios({
         url: 'http://chrisoffiong.auth0.com/userinfo', // domain
         method: 'GET',
@@ -80,12 +85,11 @@ app.get('/api/profile', function (req, res) {
 		  let data = response.data;
         console.log(data)
 
-
-		// app.post("/api/users", function(data, res){
 			db.Users.create({
 			userName: data.nickname,
 			email: data.name,
 			photo: data.picture,
+			uniqueID: data.sub.splice("|"),
 			tag1: data.tag1,
 			tag2: data.tag2,
 			tag3: data.tag3,
@@ -98,9 +102,7 @@ app.get('/api/profile', function (req, res) {
 			tag10: data.tag10}).then(res.json).catch(function(err) {
 				console.log(err);
 			})
-// 		}).then(function(response){
-// res.json(response);
-// 		})
+
       })
       .catch(function () {
         res.status(500).json({
