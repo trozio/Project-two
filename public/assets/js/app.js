@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
         clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
         responseType: 'token id_token',
         scope: 'openid profile',
-        redirectUri: 'http://localhost:3000/api/profile'
+        redirectUri: 'http://localhost:3000/'
     });
 
     // ...
@@ -19,5 +19,6 @@ window.addEventListener('load', function () {
         e.preventDefault();
         webAuth.authorize();
     });
+
 
 })
