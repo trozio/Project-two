@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
+    <script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 
 </head>
 <body>
@@ -15,8 +21,18 @@
     <div class="container">
         
     </div>
+    <a class="waves-effect red accent btn-large" id="button">Try Rally Today!</a>
+    <div class="this"></div>
+    <a class="waves-effect blue accent btn-large" id="rally">Rally</a>
+        <!-- home view -->
+        <div id="home-view">
+          <h4></h4>
+        </div>
+        
+      </main>
 
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="assets/js/app.js"></script>
     <script src="assets/js/token.js"></script>
 </body>
 </html>

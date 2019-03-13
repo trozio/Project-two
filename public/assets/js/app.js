@@ -14,10 +14,32 @@ window.addEventListener('load', function () {
 
     // ...
     var loginBtn = document.getElementById('button');
+    let logoutBtn = document.getElementById('rally');
 
     loginBtn.addEventListener('click', function (e) {
         e.preventDefault();
         webAuth.authorize();
     });
+    logoutBtn.addEventListener('click', function() {
+    
+    // Remove tokens and expiry time
+    accessToken = '';
+    idToken = '';
+    expiresAt = 0;
+    })
+    
+  function isAuthenticated() {
+    // Check whether the current time is past the
+    // Access Token's expiry time
+    var expiration = parseInt(expiresAt) || 0;
+    return localStorage.getItem('isLoggedIn') === 'true' && new Date().getTime() < expiration;
+  }
+
+
+})
+function matchUser() {
+
+}
+$("submit").on("click", function() {
 
 })

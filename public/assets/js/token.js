@@ -29,7 +29,14 @@ function callAPI() {
             <p>Email: ${data.name}</p>
             
         `);
+
     })
 }
 
 callAPI();
+
+// $("#map").hide()
+// $("#rally").on("click", function() {
+//     $("#map").show()
+
+// })
