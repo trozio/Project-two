@@ -44,7 +44,7 @@ module.exports = function(app) {
 		res.redirect('/profile');
 	})
 
-	app.post('/api/users', function(req, res) {
+	app.post('/get/token', function(req, res) {
 		let token = req.body.access_token;
 		axios({
 			url: 'http://chrisoffiong.auth0.com/userinfo', // domain
@@ -53,22 +53,22 @@ module.exports = function(app) {
 				'Authorization': 'Bearer ' + token,
 			},
 		}).then(function(response) {
-			let userData = response.data;
+			let data = response.data;
 			db.Users.create({
-				userName: userData.nickname,
-				email: userData.name,
-				photo: userData.picture,
-				uniqueID: userData.sub,
-				tag1: userData.tag1,
-				tag2: userData.tag2,
-				tag3: userData.tag3,
-				tag4: userData.tag4,
-				tag5: userData.tag5,
-				tag6: userData.tag6,
-				tag7: userData.tag7,
-				tag8: userData.tag8,
-				tag9: userData.tag9,
-				tag10: userData.tag10
+				userName: data.nickname,
+				email: data.name,
+				photo: data.picture,
+				uniqueID: data.sub,
+				tag1: data.tag1,
+				tag2: data.tag2,
+				tag3: data.tag3,
+				tag4: data.tag4,
+				tag5: data.tag5,
+				tag6: data.tag6,
+				tag7: data.tag7,
+				tag8: data.tag8,
+				tag9: data.tag9,
+				tag10: data.tag10
 			}).then(function(resp) {
 				res.json(resp);
 			});

@@ -1,6 +1,8 @@
 let apiUrl = 'http://chrisoffiong.auth0.com/userinfo';
 let token = window.location.hash;
 
+console.log(token);
+
 function convertToken(token) {
 	let tokenObj = {};
 	let hashToken = token.slice(1).split('&');
@@ -13,8 +15,17 @@ function convertToken(token) {
 	return tokenObj;
 }
 
-let convertedToken = convertToken(token);
+function getQueryVariable(variable) {
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i=0; i<vars.length ;i++) {
+		var pair = vars[i].split("=");
+		if (pair[0] == variable) {return pair[1];}
+	}
+	return(false);
+}
 
+let convertedToken = convertToken(token);
 
 window.addEventListener('load', function() {
 
@@ -22,19 +33,27 @@ window.addEventListener('load', function() {
 	var accessToken;
 	var expiresAt;
 
-	var webAuth = new auth0.WebAuth({
-		domain: 'chrisoffiong.auth0.com',
-		clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
-		responseType: 'token id_token',
-		scope: 'openid profile',
-		redirectUri: 'http://localhost:3000/'
-	});
+
+	if (getQueryVariable("newUser") == "true") {
+		$.ajax({
+			url: "http://localhost:3000/get/token",
+			type: "POST",
+			data: convertedToken
+		});
+	}
 
 	var loginBtn = document.getElementById('button');
 	if (loginBtn) {
 		loginBtn.addEventListener('click', function(e) {
 			e.preventDefault();
-			webAuth.authorize();
+			var loginAuth = new auth0.WebAuth({
+				domain: 'chrisoffiong.auth0.com',
+				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
+				responseType: 'token id_token',
+				scope: 'openid profile',
+				redirectUri: 'http://localhost:3000/'
+			});
+			loginAuth.authorize();
 		});
 	}
 
@@ -43,20 +62,27 @@ window.addEventListener('load', function() {
 	if (signUpButton) {
 		signUpButton.addEventListener('click', function(e) {
 			e.preventDefault();
-			webAuth.authorize();
-			$.ajax({
-				type: "POST",
-				url: '/api/users',
-				data: convertedToken
-			}).then(function(data) {
-				// $('.container').html(`<p>My Name is ${data.nickname}</p><img src="${data.picture}" /><p>Email: ${data.name}</p>`);
+			var signUpAuth = new auth0.WebAuth({
+				domain: 'chrisoffiong.auth0.com',
+				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
+				responseType: 'token id_token',
+				scope: 'openid profile',
+				redirectUri: 'http://localhost:3000/?newUser=true'
 			});
+			signUpAuth.authorize();
 		});
 	}
 
     var logoutBtn = document.getElementById('button2');
 	if (logoutBtn) {
 		logoutBtn.addEventListener('click', function(e) {
+			var webAuth = new auth0.WebAuth({
+				domain: 'chrisoffiong.auth0.com',
+				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
+				responseType: 'token id_token',
+				scope: 'openid profile',
+				redirectUri: 'http://localhost:3000/'
+			});
 	        console.log("Event listner added.");
 	        webAuth.logout({
 	            returnTo: 'http://localhost:3000/homepage.html',
