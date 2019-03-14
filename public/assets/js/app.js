@@ -1,8 +1,6 @@
 let apiUrl = 'http://chrisoffiong.auth0.com/userinfo';
 let token = window.location.hash;
 
-console.log(token);
-
 function convertToken(token) {
 	let tokenObj = {};
 	let hashToken = token.slice(1).split('&');
@@ -55,7 +53,7 @@ window.addEventListener('load', function() {
 			});
 			loginAuth.authorize();
 		});
-	}
+	};
 
 
 	var signUpButton = document.getElementById('button3');
