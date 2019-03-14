@@ -81,7 +81,6 @@ window.addEventListener('load', function() {
 				scope: 'openid profile',
 				redirectUri: 'http://localhost:3000/'
 			});
-	        console.log("Event listner added.");
 	        webAuth.logout({
 	            returnTo: 'http://localhost:3000/homepage.html',
 	            clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN'

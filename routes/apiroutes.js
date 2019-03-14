@@ -24,6 +24,8 @@ module.exports = function(app) {
 			eventName: response.data.eventName,
 			time: response.data.time,
 			location: response.data.location,
+			logitude: response.data.longitude,
+			latitude: response.data.latitude,
 			tag1: response.data.tag1,
 			tag2: response.data.tag2,
 			tag3: response.data.tag3,

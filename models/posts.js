@@ -3,7 +3,8 @@ module.exports = function(sequelize, DataTypes) {
     eventName: DataTypes.STRING,
 	time: DataTypes.INTEGER,
 	location: DataTypes.STRING,
-    description: DataTypes.TEXT,
+    longitude: DataTypes.STRING,
+    latitude: DataTypes.STRING,
 	tag1: {
       type: DataTypes.BOOLEAN,
 
