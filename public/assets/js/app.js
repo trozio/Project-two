@@ -35,6 +35,15 @@ window.addEventListener('load', function() {
 		loginBtn.addEventListener('click', function(e) {
 			e.preventDefault();
 			webAuth.authorize();
+		});
+	}
+
+
+	var signUpButton = document.getElementById('button3');
+	if (signUpButton) {
+		signUpButton.addEventListener('click', function(e) {
+			e.preventDefault();
+			webAuth.authorize();
 			$.ajax({
 				type: "POST",
 				url: '/api/users',
