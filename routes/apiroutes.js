@@ -41,11 +41,6 @@ module.exports = function(app) {
 		})
 	})
 
-
-	app.get('/api/profile', function(req, res) {
-		res.redirect('/profile');
-	})
-
 	app.post('/get/token', function(req, res) {
 		let token = req.body.access_token;
 		axios({
@@ -53,7 +48,7 @@ module.exports = function(app) {
 			method: 'GET',
 			headers: {
 				'Authorization': 'Bearer ' + token,
-			},
+			}
 		}).then(function(response) {
 			let data = response.data;
 			db.Users.create({
@@ -72,7 +67,7 @@ module.exports = function(app) {
 				tag9: data.tag9,
 				tag10: data.tag10
 			}).then(function(resp) {
-				res.json(resp);
+				res.cookie("id", data.sub).json(resp);
 			});
 		}).catch(function() {
 			res.status(500).json({

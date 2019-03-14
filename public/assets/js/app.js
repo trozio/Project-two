@@ -40,6 +40,19 @@ window.addEventListener('load', function() {
 		});
 	}
 
+	if (getQueryVariable("newUser") == "false") {
+		console.log(convertedToken.access_token);
+		$.ajax({
+			url: "http://chrisoffiong.auth0.com/userinfo",
+			type: "GET",
+			headers: {
+				'Authorization': 'Bearer ' + convertedToken.access_token,
+			}
+		}).then(function(response){
+			console.log(reponse);
+		})
+	};
+
 	var loginBtn = document.getElementById('button');
 	if (loginBtn) {
 		loginBtn.addEventListener('click', function(e) {
@@ -49,7 +62,7 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'http://localhost:3000/'
+				redirectUri: 'http://localhost:3000/?newUser=false'
 			});
 			loginAuth.authorize();
 		});

@@ -3,8 +3,9 @@ let app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 let db = require("./models/index.js");
+var cookieParser = require('cookie-parser');
 
-
+app.use(cookieParser());
 
 var PORT = process.env.PORT || 3000;
 
@@ -20,8 +21,6 @@ db.sequelize.sync().then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
-
 
 io.on('connection', function(socket) {
   console.log('a user connected');
