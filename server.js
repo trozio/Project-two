@@ -8,30 +8,34 @@ let db = require("./models/index.js");
 
 var PORT = process.env.PORT || 3000;
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 app.use(express.static("public"));
 
 require("./routes/htmlRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
 
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
+var roomno = 1;
+io.on('connection', function (socket) {
+
+  //Increase roomno 2 clients are present in a room.
+  if (io.nsps['/'].adapter.rooms["room-" + roomno] && io.nsps['/'].adapter.rooms["room-" + roomno].length > 1) roomno++;
+  socket.join("room-" + roomno);
+
+  //Send this event to everyone in the room.
+  io.sockets.in("room-" + roomno).emit('connectToRoom', "You are in room no. " + roomno);
+})
+
+http.listen(3000, function () {
+  console.log('listening on localhost:3000');
+});
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
 });
 
 
 
-io.on('connection', function(socket) {
-  console.log('a user connected');
-  socket.on('disconnect', function() {
-    console.log('user disconnected');
-  });
-});
-
-io.on('connection', function(socket) {
-  socket.on('chat message', function(msg) {
-    io.emit('chat message', msg);
-  });
-});
