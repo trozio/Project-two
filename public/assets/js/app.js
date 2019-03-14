@@ -1,3 +1,21 @@
+let apiUrl = 'http://chrisoffiong.auth0.com/userinfo';
+let token = window.location.hash;
+
+function convertToken(token) {
+	let tokenObj = {};
+	let hashToken = token.slice(1).split('&');
+	for (let i = 0; i < hashToken.length; i++) {
+		let subResult = hashToken[i].split('=');
+		for (let j = 0; j < subResult.length; j++) {
+			tokenObj[subResult[0]] = subResult[1];
+		}
+	}
+	return tokenObj;
+}
+
+let convertedToken = convertToken(token);
+
+
 window.addEventListener('load', function() {
 
 	var idToken;
@@ -17,6 +35,13 @@ window.addEventListener('load', function() {
 		loginBtn.addEventListener('click', function(e) {
 			e.preventDefault();
 			webAuth.authorize();
+			$.ajax({
+				type: "POST",
+				url: '/api/users',
+				data: convertedToken
+			}).then(function(data) {
+				// $('.container').html(`<p>My Name is ${data.nickname}</p><img src="${data.picture}" /><p>Email: ${data.name}</p>`);
+			});
 		});
 	}
 
