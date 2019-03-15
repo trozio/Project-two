@@ -31,7 +31,8 @@ app.post("/login", function(req, res){
 				uniqueID: response.data.sub
 			}
 		}).then(function(response){
-			res.cookie("id", response.data.sub).json(response.data);
+
+			res.cookie("id", response.dataValues.uniqueID).json(response.dataValues);
 	});
 
 	}).catch(function() {
