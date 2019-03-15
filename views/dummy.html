@@ -477,6 +477,7 @@
 				infowindow.close();
 				marker.setVisible(false);
 				var place = autocomplete.getPlace();
+				console.log(place.name);
 				if (!place.geometry) {
 					// User entered the name of a Place that was not suggested and
 					// pressed the Enter key, or the Place Details request failed.
@@ -554,7 +555,8 @@
                 let time = $("#time").val();
                 let date = $("#date").val();
                 let rallyPhoto = $("#rallyPhoto").val();
-                console.log($("#place-address"));
+				let location = place.name;
+                console.log(location);
 console.log(time);
         		$.ajax({
         			url: "http://localhost:3000/api/posts",
