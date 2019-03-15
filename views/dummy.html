@@ -144,7 +144,7 @@
 			<div class="divider"></div>
 		</li>
 		<li>
-	        <a href="#home">Home</a>
+	        <a href="/">Home</a>
 	    </li>
 	    <li>
 	        <a href="#search">Search</a>
@@ -179,21 +179,26 @@
 						<form class="container1">
 
 
-
 							<div class="row">
 								<form class="col s12">
 									<div class="row">
-										<div class="input-field col s12">
+										<div id="name" class="input-field col s12">
 											<i class="material-icons prefix">event</i>
-											<input id="icon_prefix rally_name" type="text" placeholder="ex: Cycling Race" class="validate" required>
+											<input id="rally_name" type="text" placeholder="ex: Cycling Race" class="validate" required>
 											<label for="icon_prefix rally_name">Rally Name </label>
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
 												<i class="material-icons prefix">details</i>
-												<textarea id="textarea2" class="materialize-textarea" placeholder="Add more info" data-length="256" required></textarea>
+												<textarea id="description" class="materialize-textarea" placeholder="Add more info" data-length="256" required></textarea>
 												<label for="textarea2">Rally Details</label>
 											</div>
+                                            <div class="row">
+    											<div class="input-field col s12">
+    												<i class="material-icons prefix">photo</i>
+    												<textarea id="rallyPhoto" class="materialize-textarea" placeholder="Photo URL" data-length="256" required></textarea>
+    												<label for="textarea2">Photo</label>
+    											</div>
 											<div class="input-field col s12">
 												<i class="material-icons prefix">location_on</i>
 												<div class="pac-card" id="pac-card">
@@ -243,20 +248,20 @@
 												<div class="input-field col s6">
 													<i class="material-icons prefix">date_range</i>
 													<label for="icon_prefix date">Rally Day </label>
-													<input type="text" class="datepicker" required placeholder="MM/dd/yyyy" id="icon_prefix date">
+													<input type="text" class="datepicker" required placeholder="MM/dd/yyyy" id="date">
 													<!-- <input id="icon_prefix" type="text" placeholder="ex: Cycling Race" class="validate" required> -->
 
 												</div>
 												<div class="input-field col s6">
 													<i class="material-icons prefix">update</i>
 													<label for="icon_prefix time">Rally Time </label>
-													<input type="text" class="timepicker" required placeholder="Add a time?" id="icon_prefix time">
+													<input type="text" class="timepicker" required placeholder="Add a time?" id="time">
 													<!-- <input id="icon_prefix" type="text" placeholder="ex: Cycling Race" class="validate" required> -->
 
 												</div>
 											</div>
 											<div class="input-field col s12 m6">
-												<button class="btn waves-effect waves-light red" type="submit" name="action">Create My
+												<button href="/" id="submit" class="btn waves-effect waves-light red" type="submit" name="action">Create My
 													Rally</button>
 											</div>
 
@@ -538,7 +543,39 @@
             $("#background").attr("src", "./img/background.jpg");
 
         });
-    
+
+
+
+
+        	$("#submit").on("click", function(e){
+        		e.preventDefault();
+                let rallyName = $("#rally_name").val();
+                let description = $("#description").val();
+                let time = $("#time").val();
+                let date = $("#date").val();
+                let rallyPhoto = $("#rallyPhoto").val();
+                console.log($("#place-address"));
+console.log(time);
+        		$.ajax({
+        			url: "http://localhost:3000/api/posts",
+        			method: "POST",
+        			data: {
+        				eventName: rallyName,
+        				date: date,
+        				time: time,
+                        photo: rallyPhoto,
+        				longitude: "39.25",
+        				latitude: "98.12",
+        				description: description
+        			}
+        		})
+
+
+
+        	});
+
+
+
 	</script>
 	<!-- <script>
         $(".container1").validate({

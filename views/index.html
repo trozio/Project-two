@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	
+
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
@@ -25,7 +25,7 @@
 		<div class="nav-wrapper">
 <a href="#" data-target="slide-out" class="sidenav-trigger show-on-medium-and-up"><i class="material-icons">menu</i></a>
 
-<a href="index.html"><i class="material-icons">face</i></a>
+
 		</div>
 	</nav>
 </div>
@@ -40,7 +40,7 @@
 				<a href="profile.html"><span id="email" class="white-text email"></span></a>
 			</div>
 		</li>
-		<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+		<li><a href="/create"><i class="material-icons">cloud</i>Create New Rally</a></li>
 		<li><a href="#!">Second Link</a></li>
 		<li>
 			<div class="divider"></div>
@@ -76,8 +76,8 @@
 				for (i = 0; i < results.length; i++) {
 					let post = $("<div>");
 					post.addClass("row");
-					post.html("<div class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='./img/PEOPLE-HANGING-OUT.jpg'><span class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" +
-						results[i].description + "</p></div><div class='card-action'><a href='#'>This is a link</a></div></div></div>");
+					post.html("<div class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='" + results[i].photo + "'><span class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" +
+						results[i].description + "</p><p>Date: " + results[i].date + "</p><p>Time: " + results[i].time + "</p></div><div class='card-action'><a href='#'>This is a link</a></div></div></div>");
 					$("#posts").append(post);
 
 				};

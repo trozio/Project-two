@@ -50,13 +50,13 @@ app.post("/login", function(req, res){
 
 	app.post("/api/posts", function(req, res) {
 		db.Posts.create({
-			eventName: response.data.eventName,
-			date: response.data.date,
-			time: response.data.time,
-			logitude: response.data.longitude,
-			latitude: response.data.latitude,
-			description: response.data.description,
-			participants: reponse.data.description
+			eventName: req.body.eventName,
+			date:req.body.date,
+			time: req.body.time,
+			photo: req.body.photo,
+			longitude: req.body.longitude,
+			latitude: req.body.latitude,
+			description: req.body.description
 		}).then(response => {
 			res.json(response);
 		})
