@@ -1,5 +1,6 @@
 let path = require("path");
 let Users = require("../models/users.js");
+let Userposts = require("../models/userposts.js");
 let db = require("../models/index.js");
 let express = require("express");
 var axios = require('axios')
@@ -14,6 +15,17 @@ module.exports = function(app) {
 			}
 		}).then(function(response){
 			res.json(response);
+	});
+});
+
+app.post("/api/userposts", function(req, res){
+	console.log("hit");
+	db.Userposts.create({
+		event: req.body.event,
+		user: req.body.user
+
+	}).then(function(response){
+		res.json(response);
 	});
 });
 
