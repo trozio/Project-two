@@ -37,21 +37,30 @@ window.addEventListener('load', function() {
 			url: "http://localhost:3000/get/token",
 			type: "POST",
 			data: convertedToken
+		}).then(function(results) {
+			console.log(results);
+			$("#userName").html(results.userName);
+			$("#email").html(results.email);
+			$("#photo").attr("src", results.photo);
+			$("#background").attr("src", "./img/background.jpg");
+
 		});
 	}
 
 	if (getQueryVariable("newUser") == "false") {
-		console.log(convertedToken.access_token);
 		$.ajax({
-			url: "http://chrisoffiong.auth0.com/userinfo",
-			type: "GET",
-			headers: {
-				'Authorization': 'Bearer ' + convertedToken.access_token,
-			}
-		}).then(function(response){
-			console.log(reponse);
-		})
-	};
+			url: "http://localhost:3000/login",
+			type: "POST",
+			data: convertedToken
+		}).then(function(results) {
+			console.log(results);
+			$("#userName").html(results.userName);
+			$("#email").html(results.email);
+			$("#photo").attr("src", results.photo);
+			$("#background").attr("src", "./img/background.jpg");
+
+		});
+	}
 
 	var loginBtn = document.getElementById('button');
 	if (loginBtn) {
@@ -63,8 +72,13 @@ window.addEventListener('load', function() {
 				responseType: 'token id_token',
 				scope: 'openid profile',
 				redirectUri: 'http://localhost:3000/?newUser=false'
-			});
-			loginAuth.authorize();
+			// });	$.ajax({
+			// 		url: "http://localhost:3000/login",
+			// 		method: "GET"
+			// 	}).then(function(response){
+
+				})
+		loginAuth.authorize();
 		});
 	};
 
@@ -94,10 +108,17 @@ window.addEventListener('load', function() {
 				scope: 'openid profile',
 				redirectUri: 'http://localhost:3000/'
 			});
-	        webAuth.logout({
-	            returnTo: 'http://localhost:3000/homepage.html',
-	            clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN'
-	        });
+			$.ajax({
+				url: "http://localhost:3000/logout",
+				method: "GET"
+			}).then(function(response){
+				webAuth.logout({
+		            returnTo: 'http://localhost:3000/homepage.html',
+		            clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN'
+		        });
+			})
+
+
 	    });
 	}
 

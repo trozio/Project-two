@@ -8,11 +8,39 @@ let app = express();
 
 module.exports = function(app) {
 	app.get("/api/users", function(req, res) {
-		db.Users.findAll().then(function(data) {
-			res.json(data);
-		})
-	})
+		db.Users.findOne({
+			where: {
+				uniqueID: req.cookies.id
+			}
+		}).then(function(response){
+			res.json(response);
+	});
+});
 
+app.post("/login", function(req, res){
+	let token = req.body.access_token;
+	axios({
+		url: 'http://chrisoffiong.auth0.com/userinfo', // domain
+		method: 'GET',
+		headers: {
+			'Authorization': 'Bearer ' + token,
+		}
+	}).then(function(response){
+		db.Users.findOne({
+			where: {
+				uniqueID: response.data.sub
+			}
+		}).then(function(response){
+			res.cookie("id", response.data.sub).json(response.data);
+	});
+	
+	}).catch(function() {
+		res.status(500).json({
+			message: 'Internal Error'
+		});
+	});
+
+});
 	app.get("/api/posts", function(req, res) {
 		db.Posts.findAll().then(function(data) {
 			res.json(data);
@@ -41,6 +69,10 @@ module.exports = function(app) {
 		})
 	})
 
+app.get("/logout", function(req, res){
+	console.log("hit");
+	res.clearCookie("id").send();
+})
 	app.post('/get/token', function(req, res) {
 		let token = req.body.access_token;
 		axios({
