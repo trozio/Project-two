@@ -14,7 +14,7 @@ app.get("/profile", function(req, res){
 	    res.sendFile(path.join(__dirname, "../views/profile1.html"))
 })
 
-	app.get("/homepage.html", function(req, res){
+	app.get("/homepage", function(req, res){
 		res.sendFile(path.join(__dirname, "../views/homepage.html"));
 	})
 }
