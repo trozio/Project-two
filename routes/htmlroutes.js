@@ -17,4 +17,10 @@ app.get("/profile", function(req, res){
 	app.get("/homepage.html", function(req, res){
 		res.sendFile(path.join(__dirname, "../views/homepage.html"));
 	})
+
+
+	app.get("/create", function(req, res){
+		res.sendFile(path.join(__dirname, "../views/dummy.html"));
+
+	})
 }

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		/* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+		#map_container {
+			position: relative;
+		}
+
+		#map {
+			height: 0;
+			overflow: hidden;
+			padding-bottom: 22.25%;
+			padding-top: 300px;
+			position: relative;
+		}
+
+		/* Optional: Makes the sample page fill the window. */
+		html,
+		body {
+			height: 20%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#description {
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+		}
+
+		#infowindow-content .title {
+			font-weight: bold;
+		}
+
+		#infowindow-content {
+			display: none;
+		}
+
+		#map #infowindow-content {
+			display: inline;
+		}
+
+		.pac-card {
+			margin: 10px 10px 0 0;
+			border-radius: 2px 0 0 2px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			outline: none;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+			background-color: #fff;
+			font-family: Roboto;
+		}
+
+		#pac-container {
+			padding-bottom: 12px;
+			margin-right: 12px;
+		}
+
+		.pac-controls {
+			display: inline-block;
+			padding: 5px 11px;
+		}
+
+		.pac-controls label {
+			font-family: Roboto;
+			font-size: 13px;
+			font-weight: 300;
+		}
+
+		#pac-input {
+			background-color: #fff;
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+			margin-left: 12px;
+			padding: 0 11px 0 13px;
+			text-overflow: ellipsis;
+			width: 400px;
+		}
+
+		#pac-input:focus {
+			border-color: #4d90fe;
+		}
+
+		#title {
+			color: #fff;
+			background-color: #4d90fe;
+			font-size: 25px;
+			font-weight: 500;
+			padding: 6px 12px;
+		}
+	</style>
+
+	<!--Import Google Icon Font-->
+	<link href="css/main.css" type="text/css" media="screen, projection" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="../assets/js/app.js" type="text/javascript">
+
+    </script>
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css" media="screen,projection" />
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css'>
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Rally</title>
+</head>
+
+
+<body id="home" class="scrollspy">
+	<!-- Navbar -->
+	<div class="navbar-fixed">
+		<nav class="red">
+			<div class="container">
+				<div class="nav-wrapper">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger show-on-medium-and-up"><i class="material-icons">menu</i></a>
+
+					<a href="#" class="brand-logo">Rally</a>
+					<a href="#" data-target="mobile-nav" class="sidenav-trigger">
+						<i class="material-icons">menu</i>
+					</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+    <ul id="slide-out" class="sidenav">
+		<li>
+			<div class="user-view">
+				<div class="background">
+					<img style="width: 100%; height: 100%;" id="background" src="">
+				</div>
+				<a href="profile.html"><img id="photo" class="circle"></a>
+				<a href="profile.html"><span id="userName" class="white-text name"></span></a>
+				<a href="profile.html"><span id="email" class="white-text email"></span></a>
+			</div>
+		</li>
+		<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+		<li><a href="#!">Second Link</a></li>
+		<li>
+			<div class="divider"></div>
+		</li>
+		<li>
+	        <a href="#home">Home</a>
+	    </li>
+	    <li>
+	        <a href="#search">Search</a>
+	    </li>
+	    <li>
+	        <a href="#popular Events">Popular Events</a>
+	    </li>
+
+	    <li>
+	        <a href="#contact">Contact</a>
+	    </li>
+		<li><a id="button2" href="#Logout">Logout</a></li>
+	</ul>
+	<!-- Section Slider -->
+
+	<!-- Section: Search -->
+
+	<!-- Section Icon Boxes -->
+
+	<!-- Section: Create Profile -->
+	<section id="user Profile" class="section section-popular scrollspy">
+		<div class="container">
+
+			<div class="row">
+				<h1 class="center"><span class="red-text">Create</span> Rally</h1>
+				<!-- Personal Info Card row -->
+				<!-- <div class="parallax-container">
+                <div class="parallax"><img src="img/Hikers.jpg"></div>
+            </div> -->
+				<div class="card">
+					<div class="card-content">
+						<form class="container1">
+
+
+
+							<div class="row">
+								<form class="col s12">
+									<div class="row">
+										<div class="input-field col s12">
+											<i class="material-icons prefix">event</i>
+											<input id="icon_prefix rally_name" type="text" placeholder="ex: Cycling Race" class="validate" required>
+											<label for="icon_prefix rally_name">Rally Name </label>
+										</div>
+										<div class="row">
+											<div class="input-field col s12">
+												<i class="material-icons prefix">details</i>
+												<textarea id="textarea2" class="materialize-textarea" placeholder="Add more info" data-length="256" required></textarea>
+												<label for="textarea2">Rally Details</label>
+											</div>
+											<div class="input-field col s12">
+												<i class="material-icons prefix">location_on</i>
+												<div class="pac-card" id="pac-card">
+													<div>
+														<div id="title">
+															Rally Location
+														</div>
+														<div id="type-selector" class="pac-controls">
+															<input type="radio" name="type" id="changetype-all" checked="checked">
+															<label for="changetype-all">All</label>
+
+															<input type="radio" name="type" id="changetype-establishment">
+															<label for="changetype-establishment">Establishments</label>
+
+															<input type="radio" name="type" id="changetype-address">
+															<label for="changetype-address">Addresses</label>
+
+															<input type="radio" name="type" id="changetype-geocode">
+															<label for="changetype-geocode">Geocodes</label>
+														</div>
+														<div id="strict-bounds-selector" class="pac-controls">
+															<input type="checkbox" id="use-strict-bounds" value="">
+															<label for="use-strict-bounds">Strict Bounds</label>
+														</div>
+													</div>
+													<div id="pac-container">
+														<input id="pac-input" type="text" placeholder="Enter a location">
+													</div>
+												</div>
+												<div id="map-container">
+													<div id="map"></div>
+												</div>
+												<div id="infowindow-content">
+													<img src="" width="16" height="16" id="place-icon">
+													<span id="place-name" class="title"></span><br>
+													<span id="place-address"></span>
+												</div>
+												<!-- <input id="icon_prefix rally_location" type="text" placeholder="Add a place?" class="validate" required> -->
+												<!-- <label for="icon_prefix rally_location">Rally Location </label>
+                      </div> -->
+												<!-- <div class="input-field col s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="icon_prefix rally_location" type="text" placeholder="Add a place?" class="validate"
+                          required>
+                        <label for="icon_prefix rally_location">Rally Location </label>
+                      </div> -->
+												<div class="input-field col s6">
+													<i class="material-icons prefix">date_range</i>
+													<label for="icon_prefix date">Rally Day </label>
+													<input type="text" class="datepicker" required placeholder="MM/dd/yyyy" id="icon_prefix date">
+													<!-- <input id="icon_prefix" type="text" placeholder="ex: Cycling Race" class="validate" required> -->
+
+												</div>
+												<div class="input-field col s6">
+													<i class="material-icons prefix">update</i>
+													<label for="icon_prefix time">Rally Time </label>
+													<input type="text" class="timepicker" required placeholder="Add a time?" id="icon_prefix time">
+													<!-- <input id="icon_prefix" type="text" placeholder="ex: Cycling Race" class="validate" required> -->
+
+												</div>
+											</div>
+											<div class="input-field col s12 m6">
+												<button class="btn waves-effect waves-light red" type="submit" name="action">Create My
+													Rally</button>
+											</div>
+
+											<div class="input-field col s12 m6">
+
+												<button class="btn waves-effect waves-light red" id="cancel_button" type="submit" name="action" style="float:right">Cancel My Rally</button>
+
+											</div>
+								</form>
+							</div>
+
+
+
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<!-- End of Sign Up Card row -->
+	</section>
+	<!-- Section: Follow -->
+	<section class="section section-follow red darken-2 white-text center">
+
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<h4>Follow Rally</h4>
+					<p>Follow us on social media</p>
+					<a href="#" class="white-text">
+						<i class="fab fa-facebook fa-4x"></i>
+					</a>
+					<a href="#" class="white-text">
+						<i class="fab fa-twitter fa-4x"></i>
+					</a>
+					<a href="#" class="white-text">
+						<i class="fab fa-linkedin fa-4x"></i>
+					</a>
+					<a href="#" class="white-text">
+						<i class="fab fa-instagram fa-4x"></i>
+					</a>
+					<a href="#" class="white-text">
+						<i class="fab fa-pinterest fa-4x"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Section: Contact -->
+	<section id="contact" class="section section-contact scrollspy">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m6">
+					<div class="card-panel red white-text center">
+						<i class="material-icons">email</i>
+						<h5>Contact Us</h5>
+						<p>Email us with any questions or inquiries</p>
+					</div>
+					<ul class="collection with-header">
+						<li class="collection-header">
+							<h4>Location</h4>
+						</li>
+						<li class="collection-item">Rally Headquarters</li>
+						<li class="collection-item">777 Atlanta Rd, Suite 48</li>
+						<li class="collection-item">Atlanta, GA 30332</li>
+					</ul>
+				</div>
+				<div class="col s12 m6">
+					<div class="card-panel grey lighten-3">
+						<h5>Please fill out this form</h5>
+						<div class="input-field">
+							<input type="text" placeholder="Name">
+						</div>
+						<div class="input-field">
+							<input type="text" placeholder="Email">
+						</div>
+						<div class="input-field">
+							<input type="text" placeholder="Phone">
+						</div>
+						<div class="input-field">
+							<textarea class="materialize-textarea" placeholder="Enter Message"></textarea>
+						</div>
+						<input type="submit" value="Submit" class="btn red">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer -->
+	<footer class="section red darken-2 white-text center">
+		<p class="flow-text">Rally &copy; 2019 </p>
+	</footer>
+	<!--JavaScript at end of body for optimized loading-->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js'></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfV9dkqAxkWTLLGhFnFV0vWIXOD6hZ52o&libraries=places&callback=initMap" async defer></script>
+
+
+
+	<script>
+		//Sidenav
+		const sideNav = document.querySelector('.sidenav');
+		M.Sidenav.init(sideNav, {});
+
+		//Chips
+		const chips = document.querySelectorAll('.chips');
+		M.Chips.init(chips, ({
+			limit: 10,
+			autocompleteOptions: {
+				data: {
+
+					"Cycling": null,
+					"Hiking": null,
+					"Coding": null,
+					"Fitness": null,
+					"Arts": null,
+					"Food": null,
+					"Music": null,
+					"Camping": null,
+					"Kayaking": null,
+					"Reading": null,
+					"Yoga": null,
+					"Games": null,
+				},
+				limit: Infinity,
+				minlength: 1
+			}
+
+		}))
+
+		const textNeedCount = document.querySelectorAll('#textarea2');
+		M.CharacterCounter.init(textNeedCount);
+		const elems = document.querySelectorAll('.parallax');
+		M.Parallax.init(elems, {});
+
+		M.updateTextFields();
+		const Calendar = document.querySelectorAll('.datepicker');
+		M.Datepicker.init(Calendar, {
+			format: 'mm/dd/yyyy',
+			showClearBtn: true,
+			i18n: {
+				clear: 'remove',
+				cancel: 'cancel',
+				done: 'select'
+			}
+		});
+
+		const Clock = document.querySelectorAll('.timepicker');
+		M.Timepicker.init(Clock, {
+			showClearBtn: true,
+			i18n: {
+				clear: 'clear',
+				cancel: 'cancel',
+				done: 'select'
+			}
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+			$(".dropify").dropify();
+		});
+	</script>
+	<script>
+		// This example requires the Places library. Include the libraries=places
+		// parameter when you first load the API. For example:
+		// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+		function initMap() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {
+					lat: -33.8688,
+					lng: 151.2195
+				},
+				zoom: 13
+			});
+			google.maps.event.addDomListener(window, "resize", function() {
+				var center = map.getCenter();
+				google.maps.event.trigger(map, "resize");
+				map.setCenter(center);
+			});
+
+			var card = document.getElementById('pac-card');
+			var input = document.getElementById('pac-input');
+			var types = document.getElementById('type-selector');
+			var strictBounds = document.getElementById('strict-bounds-selector');
+
+			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+			var autocomplete = new google.maps.places.Autocomplete(input);
+
+			// Bind the map's bounds (viewport) property to the autocomplete object,
+			// so that the autocomplete requests use the current map bounds for the
+			// bounds option in the request.
+			autocomplete.bindTo('bounds', map);
+
+			// Set the data fields to return when the user selects a place.
+			autocomplete.setFields(
+				['address_components', 'geometry', 'icon', 'name']);
+
+			var infowindow = new google.maps.InfoWindow();
+			var infowindowContent = document.getElementById('infowindow-content');
+			infowindow.setContent(infowindowContent);
+			var marker = new google.maps.Marker({
+				map: map,
+				anchorPoint: new google.maps.Point(0, -29)
+			});
+
+			autocomplete.addListener('place_changed', function() {
+				infowindow.close();
+				marker.setVisible(false);
+				var place = autocomplete.getPlace();
+				if (!place.geometry) {
+					// User entered the name of a Place that was not suggested and
+					// pressed the Enter key, or the Place Details request failed.
+					window.alert("No details available for input: '" + place.name + "'");
+					return;
+				}
+
+				// If the place has a geometry, then present it on a map.
+				if (place.geometry.viewport) {
+					map.fitBounds(place.geometry.viewport);
+				} else {
+					map.setCenter(place.geometry.location);
+					map.setZoom(17); // Why 17? Because it looks good.
+				}
+				marker.setPosition(place.geometry.location);
+				marker.setVisible(true);
+
+				var address = '';
+				if (place.address_components) {
+					address = [
+						(place.address_components[0] && place.address_components[0].short_name || ''),
+						(place.address_components[1] && place.address_components[1].short_name || ''),
+						(place.address_components[2] && place.address_components[2].short_name || '')
+					].join(' ');
+				}
+
+				infowindowContent.children['place-icon'].src = place.icon;
+				infowindowContent.children['place-name'].textContent = place.name;
+				infowindowContent.children['place-address'].textContent = address;
+				infowindow.open(map, marker);
+			});
+
+			// Sets a listener on a radio button to change the filter type on Places
+			// Autocomplete.
+			function setupClickListener(id, types) {
+				var radioButton = document.getElementById(id);
+				radioButton.addEventListener('click', function() {
+					autocomplete.setTypes(types);
+				});
+			}
+
+			setupClickListener('changetype-all', []);
+			setupClickListener('changetype-address', ['address']);
+			setupClickListener('changetype-establishment', ['establishment']);
+			setupClickListener('changetype-geocode', ['geocode']);
+
+			document.getElementById('use-strict-bounds')
+				.addEventListener('click', function() {
+					console.log('Checkbox clicked! New state=' + this.checked);
+					autocomplete.setOptions({
+						strictBounds: this.checked
+					});
+				});
+		}
+
+        $.ajax({
+            url: "http://localhost:3000/api/users",
+            method: "GET"
+        }).then(function(results) {
+            console.log(results);
+            $("#userName").html(results.userName);
+            $("#email").html(results.email);
+            $("#photo").attr("src", results.photo);
+            $("#background").attr("src", "./img/background.jpg");
+
+        });
+    
+	</script>
+	<!-- <script>
+        $(".container1").validate({
+            rules: {
+                fname: {
+                    required: true,
+                    minlength: 2
+                },
+                lname: {
+                    required: true,
+                    minlength: 2
+                },
+                mobile_num: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                pass: {
+                    required: true,
+                    minlength: 5
+                },
+                confirm_pass: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#pass"
+                }
+            },
+            //For custom messages
+            messages: {
+                fname: {
+                    required: "Please enter your first name.",
+                    minlength: "You sure you're named with one letter?"
+                },
+                lname: {
+                    required: "Please enter your last name.",
+                    minlength: "You sure you're named with one letter?"
+                },
+                email: {
+                    required: "Please enter your email address.",
+                    email: "Please enter a valid email address."
+                },
+                pass: {
+                    required: "Please enter a password.",
+                    minlength: "Password must be atleast 5 characters."
+                },
+                confirm_pass: {
+                    required: "Please confirm your password.",
+                    minlength: "Password must be atleast 5 characters.",
+                    equalTo: "Password does not match."
+                }
+            }
+        });
+
+    </script> -->
+</body>
+
+</html>
