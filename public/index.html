@@ -74,7 +74,7 @@
 				method: "GET"
 			}).then(function(results) {
 				console.log(results);
-				$("#userName").html(results[1].firstName + " " + results[0].lastName);
+				$("#userName").html(results[0].userName);
 				$("#email").html(results[1].email);
 				$("#photo").attr("src", results[1].photo);
 				$("#background").attr("src", "./img/background.jpg");

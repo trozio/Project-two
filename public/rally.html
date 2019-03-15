@@ -11,7 +11,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src = "/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -46,25 +48,62 @@
 
 
     <div id="map"></div>
+
     <div class="card hide" id="cardDisplay">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="img/rally.jpg" height="200" width="200">
+            <img class="activator" src="img/rally.jpg" height="200" width="200">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Would you like to Rally?<i class="material-icons right">more_vert</i></span>
-          <p><a href="#">Rally!</a></p>
+            <span class="card-title activator grey-text text-darken-4">Would you like to Rally?<i class="material-icons right">more_vert</i></span>
+            <a class="waves-effect waves-light btn modal-trigger" id="rallyHere" href="#modal1">Rally</a>
         </div>
         <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Don't go it alone</p>
+            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            <p>Don't go it alone</p>
         </div>
-      </div>
-      <div class="chat"></div>
+    </div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Rally Information</h4>
+            <p>Tell us About it!</p>
+            <form action="#">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Upload a photo!</span>
+                        <input type="file" id="inputFileToLoad" onchange="encodeImageFileAsURL()">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+    <div class="chat"></div>
     <script>
-        // Note: This example requires that you consent to location sharing when
-        // prompted by your browser. If you see the error "The Geolocation service
-        // failed.", it means you probably did not give permission for the browser to
-        // locate you.
+        $(document).ready(function () {
+            $('.modal').modal();
+        });
+
+        function encodeImageFileAsURL() {
+
+            let filesSelected = document.getElementById("inputFileToLoad").files;
+            if (filesSelected.length > 0) {
+                let fileToLoad = filesSelected[0];
+                let fileReader = new FileReader();
+
+                fileReader.onload = function (fileLoadedEvent) {
+                    let srcData = fileLoadedEvent.target.result; // <--- data: base64
+                    baseImage = srcData;
+                }
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        }
+
         var map, infoWindow;
 
         function initMap() {
@@ -77,15 +116,17 @@
             });
             infoWindow = new google.maps.InfoWindow;
             var marker = new google.maps.Marker({
-					map: map,
-				})
-            
-            marker.addListener('click', function() {
-                if( $(".hide")[0]) {
-                 $("#cardDisplay").removeClass("hide"); 
+                map: map,
+            })
+            marker.setIcon('./img/fixed.png')
+            marker.addListener('click', function (location) {
+                if ($(".hide")[0]) {
+                    $("#cardDisplay").removeClass("hide");
                 } else {
-                  $("#cardDisplay").addClass("hide")
-             } 
+                    $("#cardDisplay").addClass("hide")
+                }
+                var latLng = marker.getPosition()
+                map.setCenter(latLng)
             })
 
             google.maps.event.addListener(map, 'click', function (event) {
@@ -93,7 +134,10 @@
                 placeMarker(event.latLng);
 
             });
+            $("#rallyHere").on("click", function () {
+                alert(marker.position)
 
+            })
 
             function placeMarker(location) {
 
@@ -104,12 +148,10 @@
                     });
                 } else {
                     marker.setPosition(location);
-                    
+
                 }
             }
 
-
-            // Try HTML5 geolocation.
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
@@ -126,7 +168,6 @@
                     handleLocationError(true, infoWindow, map.getCenter());
                 });
             } else {
-                // Browser doesn't support Geolocation
                 handleLocationError(false, infoWindow, map.getCenter());
             }
 
@@ -139,11 +180,12 @@
                 infoWindow.open(map);
             }
         }
+
         var socket = io();
-       socket.on('connectToRoom',function(data) {
-         $(".chat").html() = '';
-         $(".chat").html(data);
-      });
+        socket.on('connectToRoom', function (data) {
+            $(".chat").html() = '';
+            $(".chat").html(data);
+        });
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfV9dkqAxkWTLLGhFnFV0vWIXOD6hZ52o&callback=initMap">
     </script>

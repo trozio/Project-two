@@ -28,9 +28,6 @@ io.on('connection', function (socket) {
   io.sockets.in("room-" + roomno).emit('connectToRoom', "You are in room no. " + roomno);
 })
 
-http.listen(3000, function () {
-  console.log('listening on localhost:3000');
-});
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
