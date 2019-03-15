@@ -5,6 +5,18 @@
   <style>
     /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
+      body { 
+			background-image: url('/public/img/Hikers.jpg') ;
+			/* background-position: center center; */
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			/* background-color: #999; */
+  
+}
+   html{
+          background-image: url("/public/img/Hikers.jpg");
+         }  
     #map_container {
       position: relative;
     }
@@ -87,7 +99,7 @@
 
     #title {
       color: #fff;
-      background-color: #4d90fe;
+      background-color:red;
       font-size: 25px;
       font-weight: 500;
       padding: 6px 12px;
@@ -95,7 +107,7 @@
   </style>
 
   <!--Import Google Icon Font-->
-  <link href="css/main.css" type="text/css" media="screen, projection" />
+  <!-- <link href="css/main.css" type="text/css" media="screen, projection" /> -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet"
@@ -176,9 +188,9 @@
 
   <!-- Section: Create Profile -->
   <section id="user Profile" class="section section-popular scrollspy">
-    <div class="container">
+    <div class="usercontainer">
 
-      <div class="row">
+      <!-- <div class="row"> -->
         <h1 class="center"><span class="red-text">Create</span> Rally</h1>
         <!-- Personal Info Card row -->
         <!-- <div class="parallax-container">
@@ -187,11 +199,8 @@
         <div class="card">
           <div class="card-content">
             <form class="container1">
-
-
-
-              <div class="row">
-                <form class="col s12">
+ <!-- <div class="row"> -->
+                <!-- <form class="col s12"> -->
                   <div class="row">
                     <div class="input-field col s12">
                       <i class="material-icons prefix">event</i>
@@ -207,33 +216,22 @@
                         <label for="textarea2">Rally Details</label>
                       </div>
                       <div class="input-field col s12">
-                        <i class="material-icons prefix">location_on</i>
-                        <div class="pac-card" id="pac-card">
+                        
+                        <div class="pac-card" id="pac-card"  >
+                          
                           <div>
-                            <div id="title">
+                            
+                            <div id="title" style="padding: 0;">
+                              <!-- <i class="material-icons prefix">location_on</i> -->
                               Rally Location
                             </div>
-                            <div id="type-selector" class="pac-controls">
-                              <input type="radio" name="type" id="changetype-all" checked="checked">
-                              <label for="changetype-all">All</label>
-
-                              <input type="radio" name="type" id="changetype-establishment">
-                              <label for="changetype-establishment">Establishments</label>
-
-                              <input type="radio" name="type" id="changetype-address">
-                              <label for="changetype-address">Addresses</label>
-
-                              <input type="radio" name="type" id="changetype-geocode">
-                              <label for="changetype-geocode">Geocodes</label>
-                            </div>
-                            <div id="strict-bounds-selector" class="pac-controls">
-                              <input type="checkbox" id="use-strict-bounds" value="">
-                              <label for="use-strict-bounds">Strict Bounds</label>
-                            </div>
+                            
+                          
+                          <div id="pac-container" >
+                            <input id="pac-input" type="text" required placeholder="Enter a location" style="height: 10%;">
                           </div>
-                          <div id="pac-container">
-                            <input id="pac-input" type="text" placeholder="Enter a location">
-                          </div>
+                        </div>
+                        
                         </div>
                         <div id="map-container">
                           <div id="map"></div>
@@ -243,6 +241,7 @@
                           <span id="place-name" class="title"></span><br>
                           <span id="place-address"></span>
                         </div>
+                        
                         <!-- <input id="icon_prefix rally_location" type="text" placeholder="Add a place?" class="validate" required> -->
                         <!-- <label for="icon_prefix rally_location">Rally Location </label>
                       </div> -->
@@ -252,10 +251,12 @@
                           required>
                         <label for="icon_prefix rally_location">Rally Location </label>
                       </div> -->
+                      <div>&nbsp;</div>
+                      <div>&nbsp;</div>
                         <div class="input-field col s6">
                           <i class="material-icons prefix">date_range</i>
-                          <label for="icon_prefix date">Rally Day </label>
-                          <input type="text" class="datepicker" required placeholder="MM/dd/yyyy" id="icon_prefix date">
+                          <label for="icon_prefix date">Rally Date </label>
+                          <input type="text" class="datepicker" required placeholder="MM/DD/YYYY" id="icon_prefix date">
                           <!-- <input id="icon_prefix" type="text" placeholder="ex: Cycling Race" class="validate" required> -->
 
                         </div>
@@ -268,7 +269,23 @@
 
                         </div>
                       </div>
-                      <div class="input-field col s12 m6">
+                      <div class="row hide-on-med-and-up">
+                        <div class="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+                          <div class="row">
+                            <button  type="submit" name ="action" class="col s12 btn waves-effect waves-light left red" style="padding: 0;">Create My Rally</button>
+                          </div>
+                          <div class="row">
+                            <button type="button"  name ="action" class="col s12 btn waves-effect waves-light right red"><i class="material-icons center">home</i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row hide-on-small-only">
+                        <div class="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+                          <button  type="submit" name ="action" class="col s5 btn waves-effect waves-light left red" style="padding: 0;">Create My Rally</button>
+                          <button  type="button" name ="action" class="col s5 offset-s2 btn waves-effect waves-light right red"><i class="material-icons center">home</i></button>
+                        </div>
+                      </div>
+                      <!-- <div class="input-field col s12 m6">
                         <button class="btn waves-effect waves-light red" type="submit" name="action">Create My
                           Rally</button>
                       </div>
@@ -278,7 +295,7 @@
                         <button class="btn waves-effect waves-light red" id="cancel_button" type="submit" name="action"
                           style="float:right">Cancel My Rally</button>
 
-                      </div>
+                      </div> -->
                 </form>
               </div>
 
@@ -411,8 +428,8 @@
 
     const textNeedCount = document.querySelectorAll('#textarea2');
     M.CharacterCounter.init(textNeedCount);
-    const elems = document.querySelectorAll('.parallax');
-    M.Parallax.init(elems, {});
+    // const elems = document.querySelectorAll('.parallax');
+    // M.Parallax.init(elems, {});
 
     M.updateTextFields();
     const Calendar = document.querySelectorAll('.datepicker');
@@ -420,7 +437,7 @@
       format: 'mm/dd/yyyy',
       showClearBtn: true,
       i18n: {
-        clear: 'remove',
+        clear: 'clear',
         cancel: 'cancel',
         done: 'select'
       }
@@ -448,24 +465,24 @@
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
     function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
+      let map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -33.8688, lng: 151.2195 },
         zoom: 13
       });
       google.maps.event.addDomListener(window, "resize", function () {
-        var center = map.getCenter();
+        let center = map.getCenter();
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
       });
 
-      var card = document.getElementById('pac-card');
-      var input = document.getElementById('pac-input');
-      var types = document.getElementById('type-selector');
-      var strictBounds = document.getElementById('strict-bounds-selector');
+      let card = document.getElementById('pac-card');
+      let input = document.getElementById('pac-input');
+      let types = document.getElementById('type-selector');
+      let strictBounds = document.getElementById('strict-bounds-selector');
 
       map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
-      var autocomplete = new google.maps.places.Autocomplete(input);
+      let autocomplete = new google.maps.places.Autocomplete(input);
 
       // Bind the map's bounds (viewport) property to the autocomplete object,
       // so that the autocomplete requests use the current map bounds for the
@@ -476,10 +493,10 @@
       autocomplete.setFields(
         ['address_components', 'geometry', 'icon', 'name']);
 
-      var infowindow = new google.maps.InfoWindow();
-      var infowindowContent = document.getElementById('infowindow-content');
+      let infowindow = new google.maps.InfoWindow();
+      let infowindowContent = document.getElementById('infowindow-content');
       infowindow.setContent(infowindowContent);
-      var marker = new google.maps.Marker({
+      let marker = new google.maps.Marker({
         map: map,
         anchorPoint: new google.maps.Point(0, -29)
       });
@@ -487,7 +504,7 @@
       autocomplete.addListener('place_changed', function () {
         infowindow.close();
         marker.setVisible(false);
-        var place = autocomplete.getPlace();
+        let place = autocomplete.getPlace();
         if (!place.geometry) {
           // User entered the name of a Place that was not suggested and
           // pressed the Enter key, or the Place Details request failed.
@@ -505,7 +522,7 @@
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
 
-        var address = '';
+        let address = '';
         if (place.address_components) {
           address = [
             (place.address_components[0] && place.address_components[0].short_name || ''),
@@ -523,7 +540,7 @@
       // Sets a listener on a radio button to change the filter type on Places
       // Autocomplete.
       function setupClickListener(id, types) {
-        var radioButton = document.getElementById(id);
+        let radioButton = document.getElementById(id);
         radioButton.addEventListener('click', function () {
           autocomplete.setTypes(types);
         });
@@ -541,63 +558,7 @@
         });
     }
   </script>
-  <!-- <script>
-        $(".container1").validate({
-            rules: {
-                fname: {
-                    required: true,
-                    minlength: 2
-                },
-                lname: {
-                    required: true,
-                    minlength: 2
-                },
-                mobile_num: {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 10
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                pass: {
-                    required: true,
-                    minlength: 5
-                },
-                confirm_pass: {
-                    required: true,
-                    minlength: 5,
-                    equalTo: "#pass"
-                }
-            },
-            //For custom messages
-            messages: {
-                fname: {
-                    required: "Please enter your first name.",
-                    minlength: "You sure you're named with one letter?"
-                },
-                lname: {
-                    required: "Please enter your last name.",
-                    minlength: "You sure you're named with one letter?"
-                },
-                email: {
-                    required: "Please enter your email address.",
-                    email: "Please enter a valid email address."
-                },
-                pass: {
-                    required: "Please enter a password.",
-                    minlength: "Password must be atleast 5 characters."
-                },
-                confirm_pass: {
-                    required: "Please confirm your password.",
-                    minlength: "Password must be atleast 5 characters.",
-                    equalTo: "Password does not match."
-                }
-            }
-        });
-
-    </script> -->
+  
 </body>
 
 </html>
