@@ -33,7 +33,7 @@ app.post("/login", function(req, res){
 		}).then(function(response){
 			res.cookie("id", response.data.sub).json(response.data);
 	});
-	
+
 	}).catch(function() {
 		res.status(500).json({
 			message: 'Internal Error'
@@ -50,20 +50,12 @@ app.post("/login", function(req, res){
 	app.post("/api/posts", function(req, res) {
 		db.Posts.create({
 			eventName: response.data.eventName,
+			date: response.data.date,
 			time: response.data.time,
-			location: response.data.location,
 			logitude: response.data.longitude,
 			latitude: response.data.latitude,
-			tag1: response.data.tag1,
-			tag2: response.data.tag2,
-			tag3: response.data.tag3,
-			tag4: response.data.tag4,
-			tag5: response.data.tag5,
-			tag6: response.data.tag6,
-			tag7: response.data.tag7,
-			tag8: response.data.tag8,
-			tag9: response.data.tag9,
-			tag10: response.data.tag10
+			description: response.data.description,
+			participants: reponse.data.description
 		}).then(response => {
 			res.json(response);
 		})
