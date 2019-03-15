@@ -1,14 +1,9 @@
+require("dotenv").config();
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'mysql'|'sqlite'|'postgres'|'mssql',
+const sequelize = new Sequelize(process.env.database, process.env.username, process.env.password, {
+  host: process.env.host,
+  dialect: 'mysql',
   operatorsAliases: false,
-
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  },
-
 });
+
+module.exports = connection;
