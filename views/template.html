@@ -460,24 +460,27 @@
             });
 
             // Sets a listener on a radio button to change the filter type on Places
-            // Autocomplete.
-            function setupClickListener(id, types) {
-                var radioButton = document.getElementById(id);
-                radioButton.addEventListener('click', function () {
-                    autocomplete.setTypes(types);
+         
+        
+                if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent("Let's Rally");
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                    map.setZoom(15);
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
                 });
+            } else {
+                handleLocationError(false, infoWindow, map.getCenter());
             }
 
-            setupClickListener('changetype-all', []);
-            setupClickListener('changetype-address', ['address']);
-            setupClickListener('changetype-establishment', ['establishment']);
-            setupClickListener('changetype-geocode', ['geocode']);
-
-            document.getElementById('use-strict-bounds')
-                .addEventListener('click', function () {
-                    console.log('Checkbox clicked! New state=' + this.checked);
-                    autocomplete.setOptions({ strictBounds: this.checked });
-                });
         }
 
         $.ajax({
