@@ -34,7 +34,7 @@ window.addEventListener('load', function() {
 
 	if (getQueryVariable("newUser") == "true") {
 		$.ajax({
-			url: "http://localhost:3000/get/token",
+			url: "https://boiling-fortress-49835.herokuapp.com/get/token",
 			type: "POST",
 			data: convertedToken
 		}).then(function(results) {
@@ -49,7 +49,7 @@ window.addEventListener('load', function() {
 
 	if (getQueryVariable("newUser") == "false") {
 		$.ajax({
-			url: "http://localhost:3000/login",
+			url: "https://boiling-fortress-49835.herokuapp.com/login",
 			type: "POST",
 			data: convertedToken
 		}).then(function(results) {
@@ -72,10 +72,10 @@ window.addEventListener('load', function() {
 				responseType: 'token id_token',
 				scope: 'openid profile',
 				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/homepage.html/?newUser=false'
-			// });	$.ajax({
-			// 		url: "http://localhost:3000/login",
-			// 		method: "GET"
-			// 	}).then(function(response){
+			});	$.ajax({
+					url: "https://boiling-fortress-49835.herokuapp.com/login",
+					method: "GET"
+				}).then(function(response){
 
 				})
 		loginAuth.authorize();
