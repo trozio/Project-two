@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     location: DataTypes.STRING,
   description: DataTypes.STRING,
   latitude: DataTypes.STRING,
-  Longitude: DataTypes.STRING
+  longitude: DataTypes.STRING
 });
   return Posts;
 };
