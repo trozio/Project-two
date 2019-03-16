@@ -256,51 +256,54 @@
                                         <div class="col m4 s12">
                                             <div id="cardDisplay" class="hide">
 
-                                                <div class="card horizontal">
-                                                    <div class="card-image">
-                                                        <img src="">
+                                               
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Event Name" id="event_name" type="text" class="validate">
+
+                                                        <label for="Event Details">Event Name</label>
                                                     </div>
-                                                    <div class="card-stacked">
-                                                        <div class="card-content">
-                                                            <div class="input-field col s12">
-                                                                <input placeholder="Event Name" id="event_name" type="text"
-                                                                    class="validate">
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Event Time" id="event_time" type="text"
+                                                            class="validate">
 
-                                                                <label for="Event Details">Event Name</label>
+                                                        <label for="Event Details">Event Time</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Event Description" id="event_desc" type="text" class="validate">
+                                                            
+
+                                                        <label for="Event Description">Event Details</label>
+                                                        <div class="col s12">
+                                                            <div class="file-field input-field">
+                                                                <div class="btn">
+                                                                    <span>File</span>
+                                                                    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL()" multiple>
+                                                                </div>
+                                                                <div class="file-path-wrapper">
+                                                                    <input class="file-path validate" type="text" placeholder="Upload one or more images">
+                                                                </div>
                                                             </div>
-                                                            <div class="input-field col s12">
-                                                                <input placeholder="Event Time" id="event_time" type="text"
-                                                                    class="validate">
-
-                                                                <label for="Event Details">Event Time</label>
-                                                            </div>
-                                                            <div class="input-field col s12">
-                                                                <input placeholder="Event Description" id="event_desc"
-                                                                    type="text" class="validate">
-
-                                                                <label for="Event Description">Event Details</label>
-                                                                <div class="col s12">
-                                                                    <div class="file-field input-field">
-                                                                        <div class="btn">
-                                                                            <span>File</span>
-                                                                            <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL()" multiple>
+                                                            <div class="card horizontal">
+                                                                <div class="card-image">
+                                                                    <img src="">
+                                                                </div>
+                                                                <div class="card-stacked">
+                                                                    <div class="card-content">
+                                                                       
                                                                         </div>
-                                                                        <div class="file-path-wrapper">
-                                                                            <input class="file-path validate" type="text" placeholder="Upload one or more images">
+                                                                        <div class="center-align">
+                                                                            <h4>Click below to rally to this location</h4>
+                                                                            
+                                                                                <a class="red waves-effect waves-light btn-small" id="rallyHere">Rally!</a>
+                                                                            
                                                                         </div>
                                                                     </div>
-                                                            </div>
-                                                            <div class="center-align">
-                                                                <h4>Click below to rally to this location</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-action">
-                                                            <div class="center-align">
-                                                                <a class="red waves-effect waves-light btn-small" id="rallyHere">Rally!</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                                    <div class="card-action">
+                                                                        
+                                                                    </div>
+                                                                </div>
                                                 </div>
+                                                
                                             </div>
                                             <!--                     <p class="z-depth-1">Cards</p> -->
                                         </div>
@@ -360,7 +363,7 @@
     <section id="contact" class="section section-contact scrollspy">
         <div class="container">
             <div class="row">
-                <div class="col s12 m6">
+                <form class="col s12 m6">
                     <div class="card-panel red white-text center">
                         <i class="material-icons">email</i>
                         <h5>Contact Us</h5>
@@ -374,7 +377,7 @@
                         <li class="collection-item">777 Atlanta Rd, Suite 48</li>
                         <li class="collection-item">Atlanta, GA 30332</li>
                     </ul>
-                </div>
+                </form>
                 <div class="col s12 m6">
                     <div class="card-panel grey lighten-3">
                         <h5>Please fill out this form</h5>
@@ -525,7 +528,7 @@ marker.addListener("dblclick", function() {
                                     eventName: eventNamee,
         				            time: eventTimee,
                                     photo: rallyPhoto,
-                                    longitude: longitude ,
+                                    Longitude: longitude ,
                                     latitude: latitude,
         				            description: eventDesc
                                 }
