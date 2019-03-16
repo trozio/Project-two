@@ -262,45 +262,39 @@
 
                                                         <label for="Event Details">Event Name</label>
                                                     </div>
-                                                    <div class="input-field col s12">
-                                                        <input placeholder="Event Time" id="event_time" type="text"
-                                                            class="validate">
-
-                                                        <label for="Event Details">Event Time</label>
-                                                    </div>
+                        
                                                     <div class="input-field col s12">
                                                         <input placeholder="Event Description" id="event_desc" type="text" class="validate">
                                                             
 
                                                         <label for="Event Description">Event Details</label>
-                                                        <div class="col s12">
-                                                            <div class="file-field input-field">
-                                                                <div class="btn">
-                                                                    <span>File</span>
-                                                                    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL()" multiple>
-                                                                </div>
-                                                                <div class="file-path-wrapper">
-                                                                    <input class="file-path validate" type="text" placeholder="Upload one or more images">
-                                                                </div>
+                                                        </div>
+                                                        <div class="input-field col s12">
+                                                            <i class="material-icons prefix">date_range</i>
+                                                            <label for="icon_prefix date">Rally Day </label>
+                                                            <input type="text" class="datepicker" required placeholder="MM/dd/yyyy" id="date">
+                                                            <!-- <input id="icon_prefix" type="text" placeholder="ex: Cycling Race" class="validate" required> -->
+        
+                                                        </div>
+                                                        <div class="input-field col s12">
+                                                            <i class="material-icons prefix">update</i>
+                                                            <label for="icon_prefix time">Rally Time </label>
+                                                            <input type="text" class="timepicker" required placeholder="Add a time?" id="time">
                                                             </div>
-                                                            <div class="card horizontal">
-                                                                <div class="card-image">
-                                                                    <img src="">
-                                                                </div>
-                                                                <div class="card-stacked">
-                                                                    <div class="card-content">
-                                                                       
-                                                                        </div>
+                                                                          
+                                                            <div class="input-field col s12">
+                                                                <input placeholder="Image" id="image" type="text" class="validate">
+        
+                                                                <label for="Image">Image URL</label>
+                                                            </div>
+                                                            
                                                                         <div class="center-align">
                                                                             <h4>Click below to rally to this location</h4>
                                                                             
                                                                                 <a class="red waves-effect waves-light btn-small" id="rallyHere">Rally!</a>
                                                                             
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="card-action">
-                                                                        
-                                                                    </div>
+                                                                   
                                                                 </div>
                                                 </div>
                                                 
@@ -509,9 +503,11 @@ if (filesSelected.length > 0) {
                         var longitude = location.latLng.lng();
                         console.log(latitude + ', ' + longitude);
                         $("#rallyHere").on("click", function () {
+                            let date = $("#date").val().trim()
+                            let photo = $("#image").val().trim()
                             let eventDesc = $("#event_desc").val().trim()
                             let eventNamee = $("#event_name").val().trim()
-                            let eventTimee = $("#event_time").val().trim()
+                            let eventTimee = $("#time").val().trim()
                             let rallyPhoto = $("#inputFileToLoad").val().trim()
                             console.log(rallyPhoto)
                             $.ajax({
@@ -519,11 +515,13 @@ if (filesSelected.length > 0) {
                                 method: "POST",
                                 data: {
                                     eventName: eventNamee,
+                                    date: date,
         				            time: eventTimee,
-                                    photo: rallyPhoto,
-                                    Longitude: longitude ,
+                                    photo: photo,
+                                    longitude: longitude ,
                                     latitude: latitude,
-        				            description: eventDesc
+                                    description: eventDesc,
+                                    
                                 }
                             })
                         })
