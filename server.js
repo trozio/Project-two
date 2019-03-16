@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-require("./routes/htmlRoutes.js")(app);
-require("./routes/apiRoutes.js")(app);
+require("./routes/htmlroutes.js")(app);
+require("./routes/apiroutes.js")(app);
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
