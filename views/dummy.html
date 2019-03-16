@@ -120,8 +120,7 @@
                     <a href="#" data-target="slide-out" class="sidenav-trigger show-on-medium-and-up"><i class="material-icons">menu</i></a>
 
 					<a href="#" class="brand-logo">Rally</a>
-					<a href="#" data-target="mobile-nav" class="sidenav-trigger">
-						<i class="material-icons">menu</i>
+
 					</a>
 				</div>
 			</div>
@@ -233,6 +232,27 @@
 
 												</div>
 											</div>
+
+											<!-- <div class="row hide-on-med-and-up">
+                                        <div class="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+                                            <div class="row">
+                                                <button id="submit" type="submit" name="action" class="col s12 btn waves-effect waves-light left red"
+                                                    style="padding: 0;">Create My Rally</button>
+                                            </div>
+                                            <div class="row">
+                                                <button id="cancel_button" type="button" name="action" class="col s12 btn waves-effect waves-light right red"><i
+                                                        class="material-icons center">home</i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row hide-on-small-only">
+                                        <div class="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+                                            <button id="submit" type="submit" name="action" class="col s5 btn waves-effect waves-light left red"
+                                                style="padding: 0;">Create My Rally</button>
+                                            <button id="cancel_button" type="button" name="action" class="col s5 offset-s2 btn waves-effect waves-light right red"><i
+                                                    class="material-icons center">home</i></button>
+                                        </div> -->
+
 											<div class="input-field col s12 m6">
 												<button href="/" id="submit" class="btn waves-effect waves-light red" type="submit" name="action">Create My
 													Rally</button>
@@ -380,7 +400,7 @@
 			format: 'mm/dd/yyyy',
 			showClearBtn: true,
 			i18n: {
-				clear: 'remove',
+				clear: 'clear',
 				cancel: 'cancel',
 				done: 'select'
 			}
@@ -430,7 +450,7 @@
                 let time = $("#time").val();
                 let date = $("#date").val();
                 let rallyPhoto = $("#rallyPhoto").val();
-				let location = place.name;
+				let location = $("#address").val();
                 console.log(location);
 console.log(time);
         		$.ajax({
@@ -441,8 +461,7 @@ console.log(time);
         				date: date,
         				time: time,
                         photo: rallyPhoto,
-        				longitude: "39.25",
-        				latitude: "98.12",
+        				location: location,
         				description: description
         			}
         		})

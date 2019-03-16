@@ -4,8 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     date: DataTypes.STRING,
 	time: DataTypes.STRING,
     photo: DataTypes.STRING,
-    longitude: DataTypes.STRING,
-    latitude: DataTypes.STRING,
+    location: DataTypes.STRING,
 	description: DataTypes.STRING
 });
   return Posts;

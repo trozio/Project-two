@@ -66,8 +66,7 @@ app.post("/login", function(req, res){
 			date:req.body.date,
 			time: req.body.time,
 			photo: req.body.photo,
-			longitude: req.body.longitude,
-			latitude: req.body.latitude,
+			location: req.body.location,
 			description: req.body.description
 		}).then(response => {
 			res.json(response);
