@@ -34,7 +34,7 @@ window.addEventListener('load', function() {
 
 	if (getQueryVariable("newUser") == "true") {
 		$.ajax({
-			url: "/get/token",
+			url: "http://localhost:3000/get/token",
 			type: "POST",
 			data: convertedToken
 		}).then(function(results) {
@@ -42,14 +42,14 @@ window.addEventListener('load', function() {
 			$("#userName").html(results.userName);
 			$("#email").html(results.email);
 			$("#photo").attr("src", results.photo);
-			$("#background").attr("src", "./img/background.jpg");
+			$("#background").attr("src", "../img/background.jpg");
 
 		});
 	}
 
 	if (getQueryVariable("newUser") == "false") {
 		$.ajax({
-			url: "/login",
+			url: "http://localhost:3000/login",
 			type: "POST",
 			data: convertedToken
 		}).then(function(results) {
@@ -57,7 +57,7 @@ window.addEventListener('load', function() {
 			$("#userName").html(results.userName);
 			$("#email").html(results.email);
 			$("#photo").attr("src", results.photo);
-			$("#background").attr("src", "./img/background.jpg");
+			$("#background").attr("src", "../img/background.jpg");
 
 		});
 	};
@@ -92,7 +92,7 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/homepage.html/?newUser=true'
+				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/?newUser=true'
 			});
 			signUpAuth.authorize();
 		});

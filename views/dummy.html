@@ -421,14 +421,14 @@
 
 
         $.ajax({
-            url: "/api/users",
+            url: "https://boiling-fortress-49835.herokuapp.com/api/users",
             method: "GET"
         }).then(function(results) {
             console.log(results);
             $("#userName").html(results.userName);
             $("#email").html(results.email);
             $("#photo").attr("src", results.photo);
-            $("#background").attr("src", "./img/background.jpg");
+            $("#background").attr("src", "../img/background.jpg");
 
         });
 
@@ -446,7 +446,7 @@
                 console.log(location);
 console.log(time);
         		$.ajax({
-        			url: "/api/posts",
+        			url: "https://boiling-fortress-49835.herokuapp.com/api/posts",
         			method: "POST",
         			data: {
         				eventName: rallyName,
