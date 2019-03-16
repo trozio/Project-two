@@ -421,7 +421,7 @@
 
 
         $.ajax({
-            url: "/api/users",
+            url: "http://localhost:3000/api/users",
             method: "GET"
         }).then(function(results) {
             console.log(results);
@@ -446,7 +446,7 @@
                 console.log(location);
 console.log(time);
         		$.ajax({
-        			url: "/api/posts",
+        			url: "http://localhost:3000/api/posts",
         			method: "POST",
         			data: {
         				eventName: rallyName,
