@@ -496,13 +496,6 @@ if (filesSelected.length > 0) {
                     });
                 } else {
                     marker.setPosition(location);
-  
-                    google.maps.event.addListener(marker, "dblclick", function() {
-    map.removeOverlay(marker);
-});
-marker.addListener("dblclick", function() {
-    marker.setMap(null);
-});
                     marker.addListener('click', function (location) {
                         if ($(".hide")[0]) {
                             $("#cardDisplay").removeClass("hide");
