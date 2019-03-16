@@ -500,6 +500,7 @@ marker.addListener("dblclick", function() {
                             let eventNamee = $("#event_name").val().trim()
                             let eventTimee = $("#event_time").val().trim()
                             let rallyPhoto = $("#inputFileToLoad").val().trim()
+                            console.log(rallyPhoto)
                             $.ajax({
                                 url: "https://boiling-fortress-49835.herokuapp.com/api/users",
                                 method: "POST",
