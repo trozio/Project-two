@@ -60,7 +60,7 @@ window.addEventListener('load', function() {
 			$("#background").attr("src", "./img/background.jpg");
 
 		});
-	}
+	};
 
 	var loginBtn = document.getElementById('button');
 	if (loginBtn) {
@@ -121,5 +121,7 @@ window.addEventListener('load', function() {
 
 	    });
 	}
+
+
 
 });

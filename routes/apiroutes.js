@@ -1,5 +1,6 @@
 let path = require("path");
 let Users = require("../models/users.js");
+let Userposts = require("../models/userposts.js");
 let db = require("../models/index.js");
 let express = require("express");
 var axios = require('axios')
@@ -17,6 +18,17 @@ module.exports = function(app) {
 	});
 });
 
+app.post("/api/userposts", function(req, res){
+	console.log("hit");
+	db.Userposts.create({
+		event: req.body.event,
+		user: req.body.user
+
+	}).then(function(response){
+		res.json(response);
+	});
+});
+
 app.post("/login", function(req, res){
 	let token = req.body.access_token;
 	axios({
@@ -31,7 +43,8 @@ app.post("/login", function(req, res){
 				uniqueID: response.data.sub
 			}
 		}).then(function(response){
-			res.cookie("id", response.data.sub).json(response.data);
+
+			res.cookie("id", response.dataValues.uniqueID).json(response.dataValues);
 	});
 
 	}).catch(function() {
@@ -49,13 +62,12 @@ app.post("/login", function(req, res){
 
 	app.post("/api/posts", function(req, res) {
 		db.Posts.create({
-			eventName: response.data.eventName,
-			date: response.data.date,
-			time: response.data.time,
-			logitude: response.data.longitude,
-			latitude: response.data.latitude,
-			description: response.data.description,
-			participants: reponse.data.description
+			eventName: req.body.eventName,
+			date:req.body.date,
+			time: req.body.time,
+			photo: req.body.photo,
+			location: req.body.location,
+			description: req.body.description
 		}).then(response => {
 			res.json(response);
 		})
