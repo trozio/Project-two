@@ -11,7 +11,10 @@ var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname + '/public'));
+app.use('*/css',express.static('public/css'));
+app.use('*/js',express.static('public/assests/js'));
+app.use('*/imgs',express.static('public/imgs'));
+app.use(express.static('public'))
 
 
 require("./routes/htmlroutes.js")(app);
