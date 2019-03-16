@@ -64,7 +64,7 @@
 			M.AutoInit();
 			$('.sidenav').sidenav();
 			$.ajax({
-				url: "http://localhost:3000/api/posts",
+				url: "https://boiling-fortress-49835.herokuapp.com/api/posts",
 				method: "GET"
 			}).then(function(results) {
 				console.log(results);
@@ -81,7 +81,7 @@
 
 
 			$.ajax({
-				url: "http://localhost:3000/api/users",
+				url: "https://boiling-fortress-49835.herokuapp.com/api/users",
 				method: "GET"
 			}).then(function(results) {
 				console.log(results);
@@ -98,7 +98,7 @@
 					let name = results.userName;
 console.log(thisName);
 					$.ajax({
-						url: "http://localhost:3000/api/userposts",
+						url: "https://boiling-fortress-49835.herokuapp.com/api/userposts",
 						method: "POST",
 						data: {
 							event: thisName,

@@ -71,7 +71,7 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'http://localhost:3000/homepage.html/?newUser=false'
+				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/homepage.html/?newUser=false'
 			// });	$.ajax({
 			// 		url: "http://localhost:3000/login",
 			// 		method: "GET"
@@ -92,7 +92,7 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'http://localhost:3000/?newUser=true'
+				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/?newUser=true'
 			});
 			signUpAuth.authorize();
 		});
@@ -106,14 +106,14 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'http://localhost:3000/'
+				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/'
 			});
 			$.ajax({
 				url: "/logout",
 				method: "GET"
 			}).then(function(response){
 				webAuth.logout({
-		            returnTo: 'http://localhost:3000/',
+		            returnTo: 'https://boiling-fortress-49835.herokuapp.com/',
 		            clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN'
 		        });
 			})

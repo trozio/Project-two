@@ -421,7 +421,7 @@
 
 
         $.ajax({
-            url: "http://localhost:3000/api/users",
+            url: "https://boiling-fortress-49835.herokuapp.com/api/users",
             method: "GET"
         }).then(function(results) {
             console.log(results);
@@ -446,7 +446,7 @@
                 console.log(location);
 console.log(time);
         		$.ajax({
-        			url: "http://localhost:3000/api/posts",
+        			url: "https://boiling-fortress-49835.herokuapp.com/api/posts",
         			method: "POST",
         			data: {
         				eventName: rallyName,
