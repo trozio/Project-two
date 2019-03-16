@@ -42,7 +42,7 @@ window.addEventListener('load', function() {
 			$("#userName").html(results.userName);
 			$("#email").html(results.email);
 			$("#photo").attr("src", results.photo);
-			$("#background").attr("src", "./img/background.jpg");
+			$("#background").attr("src", "../img/background.jpg");
 
 		});
 	}
@@ -57,7 +57,7 @@ window.addEventListener('load', function() {
 			$("#userName").html(results.userName);
 			$("#email").html(results.email);
 			$("#photo").attr("src", results.photo);
-			$("#background").attr("src", "./img/background.jpg");
+			$("#background").attr("src", "../img/background.jpg");
 
 		});
 	};
@@ -92,7 +92,7 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'http://localhost:3000/homepage.html/?newUser=true'
+				redirectUri: 'http://localhost:3000/?newUser=true'
 			});
 			signUpAuth.authorize();
 		});
@@ -109,7 +109,7 @@ window.addEventListener('load', function() {
 				redirectUri: 'http://localhost:3000/'
 			});
 			$.ajax({
-				url: "http://localhost:3000/logout",
+				url: "/logout",
 				method: "GET"
 			}).then(function(response){
 				webAuth.logout({
