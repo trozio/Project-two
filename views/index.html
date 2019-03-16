@@ -75,7 +75,7 @@
 					let post = $("<div>");
 					post.addClass("row");
 					post.html("<div style='margin-left: 20%;' class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='" + results[i].photo + "'><span id='eName' class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" +
-						results[i].description + "</p><p>Date: " + results[i].date + "</p><p>Time: " + results[i].time + "</p><p>" + results[i].location + "</div><div class='card-action'><a id='join' class='btn red' href='#'>Join Rally!</a><a style='padding-left: 12px;' id='directions' href='/map'>Map</a></div></div></div>");
+						results[i].description + "</p><p>Date: " + results[i].date + "</p><p>Time: " + results[i].time + "</p><p>" + results[i].location + "</div><div class='card-action'><a id='join' class='btn' href='#'>Join Rally!</a><a style='padding-left: 12px;' id='directions' href='/map'>Directions</a></div></div></div>");
 					$("#posts").append(post);
 				};
 
