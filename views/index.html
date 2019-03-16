@@ -71,7 +71,7 @@
 				for (i = 0; i < results.length; i++) {
 					let post = $("<div>");
 					post.addClass("row");
-					post.html("<div class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='" + results[i].photo + "'><span id='eName' class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" +
+					post.html("<div class='col s12 m7'><div style='padding-left: 15%;' class='card'><div class='card-image'><img class='responsive-img' src='" + results[i].photo + "'><span id='eName' class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" +
 						results[i].description + "</p><p>Date: " + results[i].date + "</p><p>Time: " + results[i].time + "</p><p>" + results[i].location + "</div><div class='card-action'><a id='join' class='btn' href='#'>Join Rally!</a><a style='padding-left: 12px;' id='directions' href='/map'>Directions</a></div></div></div>");
 					$("#posts").append(post);
 				};
