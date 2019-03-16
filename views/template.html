@@ -67,7 +67,7 @@
             background-color: #fff;
             font-family: Roboto;
         }
-        
+
         #pac-container {
             padding-bottom: 12px;
             margin-right: 12px;
@@ -166,7 +166,7 @@
             <li>
                     <a href="/map">Map</a>
                 </li>
-    
+
             <li><a id="button2" href="#Logout">Logout</a></li>
         </ul>
     <!-- Section Slider -->
@@ -256,16 +256,16 @@
                                         <div class="col m4 s12">
                                             <div id="cardDisplay" class="hide">
 
-                                               
+
                                                     <div class="input-field col s12">
                                                         <input placeholder="Event Name" id="event_name" type="text" class="validate">
 
                                                         <label for="Event Details">Event Name</label>
                                                     </div>
-                        
+
                                                     <div class="input-field col s12">
                                                         <input placeholder="Event Description" id="event_desc" type="text" class="validate">
-                                                            
+
 
                                                         <label for="Event Description">Event Details</label>
                                                         </div>
@@ -274,30 +274,30 @@
                                                             <label for="icon_prefix date">Rally Day </label>
                                                             <input type="text" class="datepicker" required placeholder="MM/dd/yyyy" id="date">
                                                             <!-- <input id="icon_prefix" type="text" placeholder="ex: Cycling Race" class="validate" required> -->
-        
+
                                                         </div>
                                                         <div class="input-field col s12">
                                                             <i class="material-icons prefix">update</i>
                                                             <label for="icon_prefix time">Rally Time </label>
                                                             <input type="text" class="timepicker" required placeholder="Add a time?" id="time">
                                                             </div>
-                                                                          
+
                                                             <div class="input-field col s12">
                                                                 <input placeholder="Image" id="image" type="text" class="validate">
-        
+
                                                                 <label for="Image">Image URL</label>
                                                             </div>
-                                                            
+
                                                                         <div class="center-align">
                                                                             <h4>Click below to rally to this location</h4>
-                                                                            
+
                                                                                 <a class="red waves-effect waves-light btn-small" id="rallyHere">Rally!</a>
-                                                                            
+
                                                                         </div>
-                                                                   
+
                                                                 </div>
                                                 </div>
-                                                
+
                                             </div>
                                             <!--                     <p class="z-depth-1">Cards</p> -->
                                         </div>
@@ -394,7 +394,7 @@
         </div>
     </section>
     <!-- Footer -->
-    <script src="./assets/js/app.js" type="text/javascript"></script>
+    <script src="../assets/js/app.js" type="text/javascript"></script>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -422,7 +422,7 @@
         // M.Parallax.init(elems, {});
 
         M.updateTextFields();
-   
+
         $(document).ready(function () {
             $(".dropify").dropify();
         });
@@ -464,7 +464,7 @@ if (filesSelected.length > 0) {
         let map, infoWindow;
 
         function initMap() {
-            
+
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {
                     lat: 33.7756,
@@ -510,8 +510,8 @@ if (filesSelected.length > 0) {
                             let eventDesc = $("#event_desc").val().trim()
                             let eventNamee = $("#event_name").val().trim()
                             let eventTimee = $("#time").val().trim()
-                           
-                            
+
+
                             $.ajax({
                                 url: "https://boiling-fortress-49835.herokuapp.com/api/posts",
                                 method: "POST",
@@ -523,7 +523,7 @@ if (filesSelected.length > 0) {
                                     longitude: longitude,
                                     latitude: latitude,
                                     description: eventDesc,
-                                    
+
                                 }
                             })
                         })
@@ -535,7 +535,7 @@ if (filesSelected.length > 0) {
 
 
             google.maps.event.addListener(map, 'click', function (event) {
-              
+
                 placeMarker(event.latLng);
 
             });
@@ -559,7 +559,7 @@ if (filesSelected.length > 0) {
 
             var infoWindow = new google.maps.InfoWindow();
 
-       
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
@@ -622,7 +622,7 @@ if (filesSelected.length > 0) {
     <footer class="section red darken-2 white-text center">
         <p class="flow-text">Rally &copy; 2019 </p>
     </footer>
-    
+
 
 
 </body>
