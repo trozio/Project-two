@@ -282,7 +282,7 @@
                                                                 <div class="col s12">
                                                                         <div class="file-field input-field">
                                                                             <div class="btn">
-                                                                                <span>File</span>
+                                                                                <span>Photo</span>
                                                                                 <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" multiple>
                                                                             </div>
                                                             </div>
@@ -421,7 +421,27 @@
             $("#background").attr("src", "../img/background.jpg");
 
         });
-    
+        function encodeImageFileAsURL() {
+
+var filesSelected = document.getElementById("inputFileToLoad").files;
+if (filesSelected.length > 0) {
+  var fileToLoad = filesSelected[0];
+
+  var fileReader = new FileReader();
+
+  fileReader.onload = function(fileLoadedEvent) {
+    var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+    var newImage = document.createElement('img');
+    newImage.src = srcData;
+
+    document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+    alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+    console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+  }
+  fileReader.readAsDataURL(fileToLoad);
+}
+}
         // This example requires the Places library. Include the libraries=places
         // parameter when you first load the API. For example:
         // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
@@ -479,15 +499,16 @@ marker.addListener("dblclick", function() {
                             let eventDesc = $("#event_desc").val().trim()
                             let eventNamee = $("#event_name").val().trim()
                             let eventTimee = $("#event_time").val().trim()
+                            let rallyPhoto = $("#inputFileToLoad").val().trim()
                             $.ajax({
                                 url: "https://boiling-fortress-49835.herokuapp.com/api/users",
                                 method: "POST",
                                 data: {
                                     eventName: eventNamee,
-        				            date: date,
         				            time: eventTimee,
                                     photo: rallyPhoto,
-        				            location: location,
+                                    longitude: longitude ,
+                                    latitude: latitude,
         				            description: eventDesc
                                 }
                             })
