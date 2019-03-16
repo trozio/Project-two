@@ -22,5 +22,10 @@ app.get("/profile", function(req, res){
 	app.get("/create", function(req, res){
 		res.sendFile(path.join(__dirname, "../views/dummy.html"));
 
-	})
+	});
+
+	app.get("/map", function(req, res){
+		res.sendFile(path.join(__dirname, "../views/template.html"));
+
+	});
 }

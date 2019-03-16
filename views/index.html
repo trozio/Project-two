@@ -46,7 +46,7 @@
 			</div>
 		</li>
 		<li><a href="/create"><i class="material-icons">cloud</i>Create New Rally</a></li>
-	
+
 		<li>
 			<div class="divider"></div>
 		</li>
@@ -72,7 +72,7 @@
 					let post = $("<div>");
 					post.addClass("row");
 					post.html("<div class='col s12 m7'><div class='card'><div class='card-image'><img class='responsive-img' src='" + results[i].photo + "'><span id='eName' class='card-title'>" + results[i].eventName + "</span></div><div class='card-content'><p>" +
-						results[i].description + "</p><p>Date: " + results[i].date + "</p><p>Time: " + results[i].time + "</p></div><div class='card-action'><a id='join' href='#'>Join Rally!</a><a id='join' href='#'>Directions</a></div></div></div>");
+						results[i].description + "</p><p>Date: " + results[i].date + "</p><p>Time: " + results[i].time + "</p><p>" + results[i].location + "</div><div class='card-action'><a id='join' class='btn' href='#'>Join Rally!</a><a style='padding-left: 12px;' id='directions' href='/map'>Directions</a></div></div></div>");
 					$("#posts").append(post);
 				};
 
@@ -92,8 +92,9 @@
 
 				$("#join").on("click", function(e){
 					e.preventDefault();
+					$("#join").addClass("disabled")
 
-					let thisName = $(".card-title").val();
+					let thisName = $("#eName").val();
 					let name = results.userName;
 console.log(thisName);
 					$.ajax({
