@@ -92,7 +92,7 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/?newUser=true'
+				redirectUri: 'https://boiling-fortress-49835.herokuapp.com/homepage.html/?newUser=true'
 			});
 			signUpAuth.authorize();
 		});
