@@ -456,7 +456,7 @@
                         } else {
                             $("#cardDisplay").addClass("hide")
                         }
-                        var latLng = marker.getPosition()
+                        var latLngi = marker.getPosition()
                         map.setCenter(latLng)
 
                         var latitude = location.latLng.lat();
@@ -468,9 +468,15 @@
                             let eventTimee = $("#event_time").val().trim()
                             $.ajax({
                                 url: "https://boiling-fortress-49835.herokuapp.com/api/users",
-                                method: "GET"
-                            }).then(function (results) {
-                                console.log(results);
+                                method: "POST",
+                                data: {
+                                    eventName: eventNamee,
+        				            date: date,
+        				            time: eventTimee,
+                                    photo: rallyPhoto,
+        				            location: location,
+        				            description: eventDesc
+                                }
                             })
                         })
 
@@ -505,11 +511,7 @@
 
             var infoWindow = new google.maps.InfoWindow();
 
-            var marker = new google.maps.Marker({
-                map: map,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
-
+       
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
