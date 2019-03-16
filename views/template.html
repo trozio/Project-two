@@ -279,6 +279,12 @@
                                                                     type="text" class="validate">
 
                                                                 <label for="Event Description">Event Details</label>
+                                                                <div class="col s12">
+                                                                        <div class="file-field input-field">
+                                                                            <div class="btn">
+                                                                                <span>File</span>
+                                                                                <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" multiple>
+                                                                            </div>
                                                             </div>
                                                             <div class="center-align">
                                                                 <h4>Click below to rally to this location</h4>
@@ -422,6 +428,7 @@
         let map, infoWindow;
 
         function initMap() {
+            
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {
                     lat: 33.7756,
@@ -450,13 +457,19 @@
                 } else {
                     marker.setPosition(location);
                     marker.setIcon('../public/img/fixed.png')
+                    google.maps.event.addListener(marker, "dblclick", function() {
+    map.removeOverlay(marker);
+});
+marker.addListener("dblclick", function() {
+    marker.setMap(null);
+});
                     marker.addListener('click', function (location) {
                         if ($(".hide")[0]) {
                             $("#cardDisplay").removeClass("hide");
                         } else {
                             $("#cardDisplay").addClass("hide")
                         }
-                        var latLngi = marker.getPosition()
+                        var latLng = marker.getPosition()
                         map.setCenter(latLng)
 
                         var latitude = location.latLng.lat();
@@ -487,7 +500,7 @@
 
 
             google.maps.event.addListener(map, 'click', function (event) {
-
+              
                 placeMarker(event.latLng);
 
             });
@@ -584,6 +597,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfV9dkqAxkWTLLGhFnFV0vWIXOD6hZ52o&libraries=places&callback=initMap"
         async defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier/1.0.3/oms.min.js"></script>
 
 
 
