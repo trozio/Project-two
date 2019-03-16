@@ -34,7 +34,7 @@ window.addEventListener('load', function() {
 
 	if (getQueryVariable("newUser") == "true") {
 		$.ajax({
-			url: "http://localhost:3000/get/token",
+			url: "/get/token",
 			type: "POST",
 			data: convertedToken
 		}).then(function(results) {
@@ -49,7 +49,7 @@ window.addEventListener('load', function() {
 
 	if (getQueryVariable("newUser") == "false") {
 		$.ajax({
-			url: "http://localhost:3000/login",
+			url: "/login",
 			type: "POST",
 			data: convertedToken
 		}).then(function(results) {
@@ -106,10 +106,10 @@ window.addEventListener('load', function() {
 				clientID: 'hkwpOqxy86BQtd8MpVH8wpRNNw08R1FN',
 				responseType: 'token id_token',
 				scope: 'openid profile',
-				redirectUri: 'http://localhost:3000/'
+				redirectUri: '/'
 			});
 			$.ajax({
-				url: "http://localhost:3000/logout",
+				url: "/logout",
 				method: "GET"
 			}).then(function(response){
 				webAuth.logout({
